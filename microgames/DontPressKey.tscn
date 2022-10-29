@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://microgames/PressKey.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Microgame.tscn" type="PackedScene" id=2]
+
+[node name="DontPressKey" instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+microgame_name = "Don't Press Spacebar"
+hint_verb = "Wait!"
+win_by_default = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." index="0"]
+margin_left = 293.0
+margin_top = 180.0
+margin_right = 627.0
+margin_bottom = 369.0
+text = "press NOTHING to win"

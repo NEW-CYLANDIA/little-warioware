@@ -1,0 +1,42 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node",
+"class": "Microgame",
+"language": "GDScript",
+"path": "res://scripts/Microgame.gd"
+} ]
+_global_script_class_icons={
+"Microgame": ""
+}
+
+[application]
+
+config/name="Little Warioware"
+run/main_scene="res://microgames/PressKey.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+Session="*res://scripts/Session.gd"
+Firebase="*res://addons/godot-firebase/firebase/firebase.tscn"
+
+[editor_plugins]
+
+enabled=PoolStringArray(  )
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"

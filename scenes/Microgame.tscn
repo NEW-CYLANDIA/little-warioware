@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/Microgame.gd" type="Script" id=2]
+
+[node name="Microgame" type="Node"]
+script = ExtResource( 2 )
+microgame_name = "My First Microgame"
+hint_verb = "Win!"
