@@ -1,16 +1,122 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://microgames/PressKey.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Microgame.tscn" type="PackedScene" id=2]
+[ext_resource path="res://microgames/PressKeySpritesheet.png" type="Texture" id=3]
+[ext_resource path="res://microgames/Y2Mate.is - Children Yay!   Sound Effect-attUrDwfdr8-128k-1655510583103.wav" type="AudioStream" id=4]
+[ext_resource path="res://microgames/Y2Mate.is - Kids Booing (Sound Effect)-cpGLDPbFT-c-128k-1655078038574.wav" type="AudioStream" id=5]
+[ext_resource path="res://microgames/elevator-music-lofi-version-30s-10822.mp3" type="AudioStream" id=6]
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 510, 10 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 10, 400 )
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 256, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 1024, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 1280, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 512, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 768, 0, 256, 256 )
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ SubResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 2 ) ],
+"loop": true,
+"name": "dont_press",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "lose",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 5 ), SubResource( 6 ) ],
+"loop": true,
+"name": "win",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 100, 100 )
 
 [node name="PressKey" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
 microgame_name = "Press Spacebar"
 hint_verb = "Press!"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="." index="0"]
-margin_left = 293.0
-margin_top = 180.0
-margin_right = 627.0
-margin_bottom = 369.0
-text = "press SPACEBAR to win"
+[node name="Area2D" type="StaticBody2D" parent="." index="0"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2( 507, -1 )
+shape = SubResource( 8 )
+
+[node name="Area2D2" type="StaticBody2D" parent="." index="1"]
+position = Vector2( 0, 609 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" index="0"]
+position = Vector2( 510, 0 )
+shape = SubResource( 8 )
+
+[node name="Area2D3" type="StaticBody2D" parent="." index="2"]
+position = Vector2( -4, 284 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3" index="0"]
+position = Vector2( 1, -1 )
+shape = SubResource( 9 )
+
+[node name="Area2D4" type="StaticBody2D" parent="." index="3"]
+position = Vector2( 1021, 272 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D4" index="0"]
+position = Vector2( 1, -1 )
+shape = SubResource( 9 )
+
+[node name="Instructions" type="KinematicBody2D" parent="." index="4"]
+position = Vector2( 558, 290 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Instructions" index="0"]
+frames = SubResource( 7 )
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instructions" index="1"]
+shape = SubResource( 10 )
+
+[node name="WinSFX" type="AudioStreamPlayer2D" parent="." index="5"]
+stream = ExtResource( 4 )
+
+[node name="LoseSFX" type="AudioStreamPlayer2D" parent="." index="6"]
+stream = ExtResource( 5 )
+
+[node name="Music" type="AudioStreamPlayer2D" parent="." index="7"]
+stream = ExtResource( 6 )
+autoplay = true

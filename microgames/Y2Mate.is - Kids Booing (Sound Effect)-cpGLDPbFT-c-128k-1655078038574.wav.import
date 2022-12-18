@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Y2Mate.is - Kids Booing (Sound Effect)-cpGLDPbFT-c-128k-1655078038574.wav-8c8ad7b46a7f0c6cad52cf35a94e5e62.sample"
+
+[deps]
+
+source_file="res://microgames/Y2Mate.is - Kids Booing (Sound Effect)-cpGLDPbFT-c-128k-1655078038574.wav"
+dest_files=[ "res://.import/Y2Mate.is - Kids Booing (Sound Effect)-cpGLDPbFT-c-128k-1655078038574.wav-8c8ad7b46a7f0c6cad52cf35a94e5e62.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,8 +1,65 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scripts/Life.gd" type="Script" id=1]
 [ext_resource path="res://scripts/Intermission.gd" type="Script" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://assets/speed_up_spritesheet.png" type="Texture" id=4]
+[ext_resource path="res://assets/level_up_spritesheet.png" type="Texture" id=5]
+[ext_resource path="res://assets/game_over_spritesheet.png" type="Texture" id=6]
+[ext_resource path="res://assets/tada-fanfare-a-6313.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/failfare-86009.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/tat-tat-92592.wav" type="AudioStream" id=9]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 512, 128 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 512, 0, 512, 128 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 512, 128 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 512, 0, 512, 128 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ) ],
+"loop": true,
+"name": "level_up",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "speed_up",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 512, 256 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 512, 0, 512, 256 )
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ SubResource( 6 ), SubResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="Intermission" type="Control"]
 anchor_right = 1.0
@@ -84,11 +141,37 @@ margin_right = 707.0
 margin_bottom = 600.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "000"
+text = "Score: 000"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.5
 one_shot = true
-autostart = true
+
+[node name="StatusUp" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 528, 248 )
+frames = SubResource( 5 )
+animation = "level_up"
+playing = true
+
+[node name="GameOver" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 518, 279 )
+frames = SubResource( 8 )
+frame = 1
+speed_scale = 0.5
+playing = true
+
+[node name="SuccessSFX" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 518, 279 )
+stream = ExtResource( 7 )
+
+[node name="StartSFX" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 518, 279 )
+stream = ExtResource( 9 )
+
+[node name="FailureSFX" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 518, 279 )
+stream = ExtResource( 8 )
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
