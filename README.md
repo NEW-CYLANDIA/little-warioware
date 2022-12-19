@@ -8,7 +8,7 @@ If you haven't played WarioWare before, I recommend checking out some longplay v
 The goal with this project is not to make a 1:1 reproduction of the original games, but to provide a framework for playing microgames and allowing _anyone_ to create their own microgames. Also, **crediting and discovery will be a primary focus** - the dream is to make a system in which you can easily bookmark microgames you enjoyed and trace the creators back to their external social media or portfolio sites.
 
 ## How can I help?
-Microgame contributions are always welcome, but there's still a lot of core system work that needs to be hammered out as well. There are a number of pieces I would like to be firmly in place before making this project fully public and open to submissions. I will try to keep the [Issues page]() updated - anything there is work that needs to be done and I could likely use all the help I can get!
+Microgame contributions are always welcome, but there's still a lot of core system work that needs to be hammered out as well. There are a number of pieces I would like to be firmly in place before making this project fully public and open to submissions. I will try to keep the [Issues page](https://github.com/iznaut/little-warioware/issues) updated - anything there is work that needs to be done and I could likely use all the help I can get!
 
 ## Resources
 At some point I will formalize the rules and guidelines for making microgames and contributing, but for now I'm just going to point to the incredible wealth of resources available on MarioWiki:
