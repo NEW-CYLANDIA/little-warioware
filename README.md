@@ -1,7 +1,6 @@
 # Little Warioware (working title)
 
-### [Playable build on itch.io](https://iznaut.itch.io/little-warioware)
-(password is `newcylandia`)
+### [Playable build on itch.io](https://iznaut.itch.io/little-warioware?password=newcylandia)
 
 ## What is this?
 Little Warioware is an open-source clone of [Nintendo's WarioWare series](https://www.mariowiki.com/WarioWare_(series)), in which players must survive a gauntlet of randomized "microgames" (games with a simple objective and a time limit of less than 10 seconds).
