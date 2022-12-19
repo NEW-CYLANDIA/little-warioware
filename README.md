@@ -13,8 +13,8 @@ Microgame contributions are always welcome, but there's still a lot of core syst
 ## Resources
 At some point I will formalize the rules and guidelines for making microgames and contributing, but for now I'm just going to point to the incredible wealth of resources available on MarioWiki:
 
-[Microgame](https://www.mariowiki.com/Microgame) - An overview of how a microgame is designed
-[List of WarioWare, Inc.: Mega Microgame$ microgames](https://www.mariowiki.com/List_of_WarioWare,_Inc.:_Mega_Microgame$!_microgames) - An exhaustive list of all 213 microgames from the original WarioWare, each with its own dedicated wiki page with gameplay descriptions and screenshots
-[WarioWare D.I.Y.](https://www.mariowiki.com/WarioWare:_D.I.Y.) - An overview of Nintendo's own attempt at a WarioWare that includes tools for user-generated content (a stretch goal for this project would be to similarly include tools that make it easy for non-programmers to create microgames!)
+- [Microgame](https://www.mariowiki.com/Microgame) - An overview of how a microgame is designed  
+- [List of WarioWare, Inc.: Mega Microgame$ microgames](https://www.mariowiki.com/List_of_WarioWare,_Inc.:_Mega_Microgame$!_microgames) - An exhaustive list of all 213 microgames from the original WarioWare, each with its own dedicated wiki page with gameplay descriptions and screenshots  
+- [WarioWare D.I.Y.](https://www.mariowiki.com/WarioWare:_D.I.Y.) - An overview of Nintendo's own attempt at a WarioWare that includes tools for user-generated content (a stretch goal for this project would be to similarly include tools that make it easy for non-programmers to create microgames!)
 
 You can also read my [more rambly notes on Notion](https://iznaut.notion.site/Little-Warioware-c289be2b77fe4b478a5bf1ad66cef8b5), if you really want to.
