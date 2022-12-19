@@ -1,11 +1,16 @@
 # Little Warioware (working title)
 
+### [Playable build on itch.io](https://iznaut.itch.io/little-warioware)
+(password is `newcylandia`)
+
 ## What is this?
 Little Warioware is an open-source clone of [Nintendo's WarioWare series](https://www.mariowiki.com/WarioWare_(series)), in which players must survive a gauntlet of randomized "microgames" (games with a simple objective and a time limit of less than 10 seconds).
 
 If you haven't played WarioWare before, I recommend checking out some longplay videos on Youtube: https://youtu.be/XLg1zLXTnL0?t=168
 
 The goal with this project is not to make a 1:1 reproduction of the original games, but to provide a framework for playing microgames and allowing _anyone_ to create their own microgames. Also, **crediting and discovery will be a primary focus** - the dream is to make a system in which you can easily bookmark microgames you enjoyed and trace the creators back to their external social media or portfolio sites.
+
+In short - I want to give WarioWare the [Little Mario](https://github.com/a-little-org-called-mario/a-little-game-called-mario) treatment!
 
 ## How can I help?
 Microgame contributions are always welcome, but there's still a lot of core system work that needs to be hammered out as well. There are a number of pieces I would like to be firmly in place before making this project fully public and open to submissions. I will try to keep the [Issues page](https://github.com/iznaut/little-warioware/issues) updated - anything there is work that needs to be done and I could likely use all the help I can get!
