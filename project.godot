@@ -12,12 +12,12 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "Microgame",
 "language": "GDScript",
-"path": "res://scripts/Microgame.gd"
+"path": "res://scripts/core/Microgame.gd"
 }, {
 "base": "Node",
 "class": "Session",
 "language": "GDScript",
-"path": "res://scripts/Session.gd"
+"path": "res://scripts/core/Session.gd"
 } ]
 _global_script_class_icons={
 "Microgame": "",
@@ -32,7 +32,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Global="*res://scripts/Global.gd"
+Global="*res://scripts/core/Global.gd"
 Utility="*res://scripts/Utility.gd"
 
 [editor_plugins]
@@ -41,7 +41,27 @@ enabled=PoolStringArray(  )
 
 [input]
 
-action={
+mg_up={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777232,"unicode":0,"echo":false,"script":null)
+ ]
+}
+mg_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777233,"unicode":0,"echo":false,"script":null)
+ ]
+}
+mg_down={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777234,"unicode":0,"echo":false,"script":null)
+ ]
+}
+mg_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777231,"unicode":0,"echo":false,"script":null)
+ ]
+}
+mg_action={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":90,"unicode":0,"echo":false,"script":null)
  ]

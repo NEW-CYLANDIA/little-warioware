@@ -29,7 +29,7 @@ func _physics_process(delta):
 
 
 func _input(event):
-	if event.is_action_pressed("action"):
+	if event.is_action_pressed("mg_action"):
 		if win_by_default:
 			is_success = false
 			press_sprite.animation = "lose"

@@ -4,6 +4,10 @@ extends Node
 # Custom microgames should extend this
 
 
+# Emitted when microgame _ready() is complete
+# Allows Session to do some last second config
+signal microgame_ready(microgame_node)
+
 # Emitted when timer finishes
 # Reports player success or failure back to current session so score/lives can be updated accordingly
 signal report_result(is_success)
@@ -39,18 +43,18 @@ func _ready():
 
 	# create timer, connect signals
 	timer = Global.timer_scene.instance()
+
 	# warning-ignore:return_value_discarded
 	timer.connect("timeout", self, "_on_Timer_timeout")	
 	# warning-ignore:return_value_discarded
 	connect("report_result", session, "_on_result_reported")
+	# warning-ignore:return_value_discarded
+	connect("microgame_ready", session, "configure_audio_nodes")
+
 	add_child(timer)
 
-	var audio_nodes : Array
-
-	Utility.find_by_class(self, "AudioStreamPlayer2D", audio_nodes)
-
-	for audio_player in audio_nodes:
-		audio_player.pitch_scale = session.speed
+	# let Session know microgame has finished loading
+	emit_signal("microgame_ready", self)
 
 
 func _on_Timer_timeout():
@@ -58,4 +62,4 @@ func _on_Timer_timeout():
 	emit_signal("report_result", is_success)
 
 	# warning-ignore:return_value_discarded
-	get_tree().change_scene("res://scenes/Intermission.tscn")
+	get_tree().change_scene("res://scenes/core/Intermission.tscn")

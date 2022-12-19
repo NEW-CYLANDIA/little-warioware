@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://microgames/PressKey.gd" type="Script" id=1]
-[ext_resource path="res://scenes/Microgame.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/core/Microgame.tscn" type="PackedScene" id=2]
 [ext_resource path="res://microgames/PressKeySpritesheet.png" type="Texture" id=3]
 [ext_resource path="res://microgames/Y2Mate.is - Children Yay!   Sound Effect-attUrDwfdr8-128k-1655510583103.wav" type="AudioStream" id=4]
 [ext_resource path="res://microgames/Y2Mate.is - Kids Booing (Sound Effect)-cpGLDPbFT-c-128k-1655078038574.wav" type="AudioStream" id=5]

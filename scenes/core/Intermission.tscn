@@ -1,33 +1,29 @@
 [gd_scene load_steps=18 format=2]
 
-[ext_resource path="res://scripts/Life.gd" type="Script" id=1]
-[ext_resource path="res://scripts/Intermission.gd" type="Script" id=2]
-[ext_resource path="res://icon.png" type="Texture" id=3]
-[ext_resource path="res://assets/speed_up_spritesheet.png" type="Texture" id=4]
-[ext_resource path="res://assets/level_up_spritesheet.png" type="Texture" id=5]
-[ext_resource path="res://assets/game_over_spritesheet.png" type="Texture" id=6]
-[ext_resource path="res://assets/tada-fanfare-a-6313.wav" type="AudioStream" id=7]
-[ext_resource path="res://assets/failfare-86009.wav" type="AudioStream" id=8]
-[ext_resource path="res://assets/tat-tat-92592.wav" type="AudioStream" id=9]
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://scripts/core/Intermission.gd" type="Script" id=2]
+[ext_resource path="res://scripts/core/Life.gd" type="Script" id=3]
+[ext_resource path="res://assets/tada-fanfare-a-6313.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/failfare-86009.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/tat-tat-92592.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/level_up_spritesheet.png" type="Texture" id=7]
+[ext_resource path="res://assets/game_over_spritesheet.png" type="Texture" id=8]
+[ext_resource path="res://assets/speed_up_spritesheet.png" type="Texture" id=9]
 
 [sub_resource type="AtlasTexture" id=1]
-flags = 4
-atlas = ExtResource( 5 )
+atlas = ExtResource( 7 )
 region = Rect2( 0, 0, 512, 128 )
 
 [sub_resource type="AtlasTexture" id=2]
-flags = 4
-atlas = ExtResource( 5 )
+atlas = ExtResource( 7 )
 region = Rect2( 512, 0, 512, 128 )
 
 [sub_resource type="AtlasTexture" id=3]
-flags = 4
-atlas = ExtResource( 4 )
+atlas = ExtResource( 9 )
 region = Rect2( 0, 0, 512, 128 )
 
 [sub_resource type="AtlasTexture" id=4]
-flags = 4
-atlas = ExtResource( 4 )
+atlas = ExtResource( 9 )
 region = Rect2( 512, 0, 512, 128 )
 
 [sub_resource type="SpriteFrames" id=5]
@@ -44,13 +40,11 @@ animations = [ {
 } ]
 
 [sub_resource type="AtlasTexture" id=6]
-flags = 4
-atlas = ExtResource( 6 )
+atlas = ExtResource( 8 )
 region = Rect2( 0, 0, 512, 256 )
 
 [sub_resource type="AtlasTexture" id=7]
-flags = 4
-atlas = ExtResource( 6 )
+atlas = ExtResource( 8 )
 region = Rect2( 512, 0, 512, 256 )
 
 [sub_resource type="SpriteFrames" id=8]
@@ -88,9 +82,9 @@ size_flags_horizontal = 3
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/MarginContainer"]
 margin_right = 94.0
 margin_bottom = 64.0
-texture = ExtResource( 3 )
+texture = ExtResource( 1 )
 stretch_mode = 6
-script = ExtResource( 1 )
+script = ExtResource( 3 )
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
 margin_left = 98.0
@@ -101,9 +95,9 @@ size_flags_horizontal = 3
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/MarginContainer2"]
 margin_right = 95.0
 margin_bottom = 64.0
-texture = ExtResource( 3 )
+texture = ExtResource( 1 )
 stretch_mode = 6
-script = ExtResource( 1 )
+script = ExtResource( 3 )
 index = 1
 
 [node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
@@ -115,9 +109,9 @@ size_flags_horizontal = 3
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/MarginContainer3"]
 margin_right = 94.0
 margin_bottom = 64.0
-texture = ExtResource( 3 )
+texture = ExtResource( 1 )
 stretch_mode = 6
-script = ExtResource( 1 )
+script = ExtResource( 3 )
 index = 2
 
 [node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
@@ -129,9 +123,9 @@ size_flags_horizontal = 3
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/MarginContainer4"]
 margin_right = 95.0
 margin_bottom = 64.0
-texture = ExtResource( 3 )
+texture = ExtResource( 1 )
 stretch_mode = 6
-script = ExtResource( 1 )
+script = ExtResource( 3 )
 index = 3
 
 [node name="ScoreDisplay" type="RichTextLabel" parent="."]
@@ -152,26 +146,29 @@ visible = false
 position = Vector2( 528, 248 )
 frames = SubResource( 5 )
 animation = "level_up"
+frame = 1
 playing = true
 
 [node name="GameOver" type="AnimatedSprite" parent="."]
 visible = false
 position = Vector2( 518, 279 )
 frames = SubResource( 8 )
-frame = 1
 speed_scale = 0.5
 playing = true
 
 [node name="SuccessSFX" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 518, 279 )
-stream = ExtResource( 7 )
+stream = ExtResource( 4 )
+bus = "Session"
 
 [node name="StartSFX" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 518, 279 )
-stream = ExtResource( 9 )
+stream = ExtResource( 6 )
+bus = "Session"
 
 [node name="FailureSFX" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 518, 279 )
-stream = ExtResource( 8 )
+stream = ExtResource( 5 )
+bus = "Session"
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

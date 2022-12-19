@@ -70,6 +70,23 @@ func get_random_microgame():
 	return microgame_scenes[rand_range(0, microgame_scenes.size())]
 
 
+func configure_audio_nodes(microgame_node):
+	var audio_nodes : Array = []
+	var audio_nodes_2d : Array = []
+	var audio_nodes_3d : Array = []
+
+	Utility.find_by_class(microgame_node, "AudioStreamPlayer", audio_nodes)
+	Utility.find_by_class(microgame_node, "AudioStreamPlayer2D", audio_nodes_2d)
+	Utility.find_by_class(microgame_node, "AudioStreamPlayer3D", audio_nodes_3d)
+
+	audio_nodes += audio_nodes_2d + audio_nodes_3d
+
+	# set any microgame audio to pitch up along with session speed
+	for audio_player in audio_nodes:
+		audio_player.bus = "Session"
+		audio_player.pitch_scale = speed
+
+
 func _on_result_reported(is_success):
 	# always increase "score" count, even if failed
 	score += 1
