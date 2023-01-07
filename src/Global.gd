@@ -7,7 +7,7 @@ signal high_scores_cleared
 
 enum difficulty { EASY = 1, MEDIUM = 2, HARD = 3 }
 
-var timer_scene : PackedScene = preload("res://scenes/core/MicrogameTimer.tscn")
+var timer_scene : PackedScene = preload("res://src/core/MicrogameTimer.tscn")
 
 var modes = {
 	"standard": {
