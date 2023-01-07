@@ -14,7 +14,7 @@ func _ready():
 func _on_Button_pressed(mode_name):
 	Global.start_new_session(mode_name)
 	# warning-ignore:return_value_discarded
-	get_tree().change_scene("res://scenes/core/Intermission.tscn")
+	get_tree().change_scene("res://src/core/Intermission.tscn")
 
 
 func update_high_score_text():

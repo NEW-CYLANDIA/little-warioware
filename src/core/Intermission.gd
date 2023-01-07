@@ -66,7 +66,7 @@ func _on_Timer_timeout():
 	else:
 		emit_signal("end_session")
 		# warning-ignore:return_value_discarded
-		get_tree().change_scene("res://scenes/Menu.tscn")
+		get_tree().change_scene("res://src/menus/Menu.tscn")
 
 
 func show_modifier_update(type):

@@ -62,4 +62,4 @@ func _on_Timer_timeout():
 	emit_signal("report_result", is_success)
 
 	# warning-ignore:return_value_discarded
-	get_tree().change_scene("res://scenes/core/Intermission.tscn")
+	get_tree().change_scene("res://src/core/Intermission.tscn")
