@@ -9,17 +9,23 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Resource",
+"class": "GameMode",
+"language": "GDScript",
+"path": "res://src/core/game_mode.gd"
+}, {
 "base": "Node",
 "class": "Microgame",
 "language": "GDScript",
-"path": "res://src/core/Microgame.gd"
+"path": "res://src/microgames/microgame.gd"
 }, {
 "base": "Node",
 "class": "Session",
 "language": "GDScript",
-"path": "res://src/core/Session.gd"
+"path": "res://src/core/session.gd"
 } ]
 _global_script_class_icons={
+"GameMode": "",
 "Microgame": "",
 "Session": ""
 }
@@ -27,13 +33,17 @@ _global_script_class_icons={
 [application]
 
 config/name="Little Warioware"
-run/main_scene="res://src/menus/Menu.tscn"
+run/main_scene="res://src/menus/menu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-Global="*res://src/Global.gd"
-Utility="*res://src/Utility.gd"
+Global="*res://src/core/global.gd"
+Utility="*res://src/core/utility.gd"
+
+[debug]
+
+gdscript/warnings/return_value_discarded=false
 
 [editor_plugins]
 
