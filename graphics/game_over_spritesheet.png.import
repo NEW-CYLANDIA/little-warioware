@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/game_over_spritesheet.png-df0c2445512fc7b578ec6efc930aa2f5.stex"
+path="res://.import/game_over_spritesheet.png-76a1d898f0c75987deab7539ec446cbb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/game_over_spritesheet.png"
-dest_files=[ "res://.import/game_over_spritesheet.png-df0c2445512fc7b578ec6efc930aa2f5.stex" ]
+source_file="res://graphics/game_over_spritesheet.png"
+dest_files=[ "res://.import/game_over_spritesheet.png-76a1d898f0c75987deab7539ec446cbb.stex" ]
 
 [params]
 

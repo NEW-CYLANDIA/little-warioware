@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/tat-tat-92592.wav-438d7743f7edd0a05b7e15eb369aeeb4.sample"
+path="res://.import/tada-fanfare-a-6313.wav-00d5c107dae32fbe665e23865bd06acc.sample"
 
 [deps]
 
-source_file="res://assets/tat-tat-92592.wav"
-dest_files=[ "res://.import/tat-tat-92592.wav-438d7743f7edd0a05b7e15eb369aeeb4.sample" ]
+source_file="res://audio/tada-fanfare-a-6313.wav"
+dest_files=[ "res://.import/tada-fanfare-a-6313.wav-00d5c107dae32fbe665e23865bd06acc.sample" ]
 
 [params]
 

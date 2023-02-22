@@ -1,14 +1,14 @@
 [gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://src/play_session/intermission.gd" type="Script" id=1]
-[ext_resource path="res://assets/level_up_spritesheet.png" type="Texture" id=2]
-[ext_resource path="res://assets/tada-fanfare-a-6313.wav" type="AudioStream" id=3]
-[ext_resource path="res://assets/tat-tat-92592.wav" type="AudioStream" id=4]
-[ext_resource path="res://assets/game_over_spritesheet.png" type="Texture" id=5]
-[ext_resource path="res://assets/speed_up_spritesheet.png" type="Texture" id=6]
-[ext_resource path="res://assets/failfare-86009.wav" type="AudioStream" id=7]
+[ext_resource path="res://graphics/level_up_spritesheet.png" type="Texture" id=2]
+[ext_resource path="res://audio/tada-fanfare-a-6313.wav" type="AudioStream" id=3]
+[ext_resource path="res://audio/tat-tat-92592.wav" type="AudioStream" id=4]
+[ext_resource path="res://graphics/game_over_spritesheet.png" type="Texture" id=5]
+[ext_resource path="res://graphics/speed_up_spritesheet.png" type="Texture" id=6]
+[ext_resource path="res://audio/failfare-86009.wav" type="AudioStream" id=7]
 [ext_resource path="res://src/play_session/life.gd" type="Script" id=8]
-[ext_resource path="res://icon.png" type="Texture" id=9]
+[ext_resource path="res://graphics/icon.png" type="Texture" id=9]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
