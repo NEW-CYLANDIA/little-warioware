@@ -104,3 +104,8 @@ func increment_modifier(type : String) -> void:
 			level = GameMode.difficulty.MEDIUM
 		elif level == GameMode.difficulty.MEDIUM:
 			level = GameMode.difficulty.HARD
+
+
+func end_session() -> void:
+	Scores.save_score_for(mode, score)
+	queue_free()

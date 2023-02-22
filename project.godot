@@ -38,8 +38,9 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Global="*res://src/core/global.gd"
 Utility="*res://src/core/utility.gd"
+Global="*res://src/core/global.gd"
+Scores="*res://src/core/scores.gd"
 
 [debug]
 

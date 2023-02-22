@@ -18,8 +18,8 @@ onready var sfx_start : AudioStreamPlayer2D = $StartSFX as AudioStreamPlayer2D
 
 
 func _ready() -> void:
-	connect("increment_modifier", session, "_increment_modifier")
-	connect("end_session", Global, "_end_session")
+	connect("increment_modifier", session, "increment_modifier")
+	connect("end_session", session, "end_session")
 
 	score_display.text = "Score: " + session.score as String
 
