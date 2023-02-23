@@ -52,22 +52,15 @@ func _init(mode_name : String) -> void:
 
 
 func get_microgame_scenes() -> void:
-	var dir := Directory.new()
-	dir.open("res://microgames/")
-	dir.list_dir_begin()
-
-	while true:
-		var file = dir.get_next()
-		if file == "":
-			break
-		elif file.get_extension() == "tscn":
-			microgame_scenes.append("res://microgames/" + file)
-
-	dir.list_dir_end()
+	microgame_scenes.clear()
+	for file in Utility.find_microgames():
+		var definition : Resource = load(file)
+		if definition is MicrogameDefinition:
+			microgame_scenes.append(definition.scene.resource_path)
 
 
 func get_random_microgame() -> String:
-	return microgame_scenes[rand_range(0, microgame_scenes.size())]
+	return microgame_scenes[randi() % microgame_scenes.size()]
 
 
 func configure_audio_nodes(microgame_node : Node) -> void:
