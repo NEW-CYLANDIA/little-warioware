@@ -1,8 +1,10 @@
-class_name Microgame
 extends Node
+class_name Microgame
 # Base class for creating a microgame
 # Custom microgames should extend this
 
+
+var timer_scene : PackedScene = preload("res://src/play_session/microgame_timer.tscn")
 
 # Emitted when microgame _ready() is complete
 # Allows Session to do some last second config
@@ -33,7 +35,7 @@ var timer : Timer
 var session : Session = Global.current_session
 
 
-func _ready():
+func _ready() -> void:
 	# if playing microgame in isolation, create a temporary session
 	if !session:
 		session = Global.start_new_session("debug")
@@ -42,13 +44,10 @@ func _ready():
 	is_success = win_by_default
 
 	# create timer, connect signals
-	timer = Global.timer_scene.instance()
+	timer = timer_scene.instance() as Timer
 
-	# warning-ignore:return_value_discarded
-	timer.connect("timeout", self, "_on_Timer_timeout")	
-	# warning-ignore:return_value_discarded
-	connect("report_result", session, "_on_result_reported")
-	# warning-ignore:return_value_discarded
+	timer.connect("timeout", self, "on_Timer_timeout")	
+	connect("report_result", session, "on_result_reported")
 	connect("microgame_ready", session, "configure_audio_nodes")
 
 	add_child(timer)
@@ -57,9 +56,8 @@ func _ready():
 	emit_signal("microgame_ready", self)
 
 
-func _on_Timer_timeout():
+func on_Timer_timeout() -> void:
 	# Let session know the microgame is over
 	emit_signal("report_result", is_success)
 
-	# warning-ignore:return_value_discarded
-	get_tree().change_scene("res://src/core/Intermission.tscn")
+	get_tree().change_scene("res://src/play_session/intermission.tscn")

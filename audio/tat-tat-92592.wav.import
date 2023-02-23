@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/failfare-86009.wav-ae71087cd335cd408a5bee4648adc87c.sample"
+path="res://.import/tat-tat-92592.wav-21188a59827573263d9fb91bd0720ad1.sample"
 
 [deps]
 
-source_file="res://assets/failfare-86009.wav"
-dest_files=[ "res://.import/failfare-86009.wav-ae71087cd335cd408a5bee4648adc87c.sample" ]
+source_file="res://audio/tat-tat-92592.wav"
+dest_files=[ "res://.import/tat-tat-92592.wav-21188a59827573263d9fb91bd0720ad1.sample" ]
 
 [params]
 
