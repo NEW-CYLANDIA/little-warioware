@@ -25,6 +25,8 @@ export (String) var hint_verb : String
 # Use "is_success" to update player's current success state
 export (bool) var win_by_default : bool = false
 
+export (bool) var use_timer : bool = true;
+
 # Set _true_ to report a win on microgame complete or _false_ to report a loss
 var is_success : bool = false
 
@@ -57,6 +59,7 @@ func _ready() -> void:
 
 
 func on_Timer_timeout() -> void:
+	return; #TODO remove this and figure out how to remove or add time to the timer
 	# Let session know the microgame is over
 	emit_signal("report_result", is_success)
 

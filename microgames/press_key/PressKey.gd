@@ -37,4 +37,4 @@ func _input(event):
 		else:
 			is_success = true
 			press_sprite.animation = "win"
-			$WinSFX.play()			
+			$WinSFX.play()
