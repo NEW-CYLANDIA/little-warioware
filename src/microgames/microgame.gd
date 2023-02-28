@@ -47,8 +47,6 @@ func _ready() -> void:
 
 	# create timer, connect signals
 	timer = timer_scene.instance() as Timer
-	
-	timer.time_left
 
 	timer.connect("timeout", self, "on_Timer_timeout")	
 	connect("report_result", session, "on_result_reported")
