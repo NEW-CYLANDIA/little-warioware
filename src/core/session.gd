@@ -64,7 +64,6 @@ func get_microgame_scenes() -> void:
 			var inner_file = inner_dir.get_next();
 			while inner_file != "":
 				if (inner_file.get_extension() == "tscn"):
-					print(inner_file);
 					microgame_scenes.append("res://microgames/" + file + "/" + inner_file)
 				inner_file = inner_dir.get_next();
 			inner_dir.list_dir_end();

@@ -57,10 +57,11 @@ func _input(event: InputEvent) -> void:
 				yield(get_tree().create_timer(0.2), "timeout")
 				visible = false;
 				emit_signal("drawing_done", true);
-	
+		else:
+			$WrongPixelPlaceSfx.play();
+			
 	dir = Input.get_vector("mg_left", "mg_right", "mg_up", "mg_down")
 	dir.x = floor(dir.x);
 	dir.y = floor(dir.y);
-	print(dir);
 	target += dir * cell_size;
 	
