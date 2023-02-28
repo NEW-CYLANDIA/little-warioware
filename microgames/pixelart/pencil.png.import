@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pencil.png-b7d8c7803844c2152263310f5f563636.stex"
+path="res://.import/pencil.png-6a8d83ec8051e76465cefbc9c05fe04b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://microgames/pick_color/pencil.png"
-dest_files=[ "res://.import/pencil.png-b7d8c7803844c2152263310f5f563636.stex" ]
+source_file="res://microgames/pixelart/pencil.png"
+dest_files=[ "res://.import/pencil.png-6a8d83ec8051e76465cefbc9c05fe04b.stex" ]
 
 [params]
 

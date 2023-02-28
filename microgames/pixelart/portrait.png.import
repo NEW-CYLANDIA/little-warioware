@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/crosshair.png-21f76367b0e980e373b60c3136e6b812.stex"
+path="res://.import/portrait.png-32f7c9ac84fcd1466995315576e55f29.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://microgames/pick_color/crosshair.png"
-dest_files=[ "res://.import/crosshair.png-21f76367b0e980e373b60c3136e6b812.stex" ]
+source_file="res://microgames/pixelart/portrait.png"
+dest_files=[ "res://.import/portrait.png-32f7c9ac84fcd1466995315576e55f29.stex" ]
 
 [params]
 

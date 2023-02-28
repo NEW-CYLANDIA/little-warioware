@@ -47,19 +47,22 @@ func _ready() -> void:
 
 	# create timer, connect signals
 	timer = timer_scene.instance() as Timer
+	
+	timer.time_left
 
 	timer.connect("timeout", self, "on_Timer_timeout")	
 	connect("report_result", session, "on_result_reported")
 	connect("microgame_ready", session, "configure_audio_nodes")
-
-	add_child(timer)
+	
+	var ui_parent = CanvasLayer.new();
+	add_child(ui_parent);
+	ui_parent.add_child(timer)
 
 	# let Session know microgame has finished loading
 	emit_signal("microgame_ready", self)
 
 
 func on_Timer_timeout() -> void:
-	return; #TODO remove this and figure out how to remove or add time to the timer
 	# Let session know the microgame is over
 	emit_signal("report_result", is_success)
 

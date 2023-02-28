@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/portrait.png-6d13f17111171b45838238d6b49f153c.stex"
+path="res://.import/surrounding_interface.png-d2ee99f1720797f4fec7d038c0b86519.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://microgames/pick_color/portrait.png"
-dest_files=[ "res://.import/portrait.png-6d13f17111171b45838238d6b49f153c.stex" ]
+source_file="res://microgames/pixelart/surrounding_interface.png"
+dest_files=[ "res://.import/surrounding_interface.png-d2ee99f1720797f4fec7d038c0b86519.stex" ]
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=0
+flags/repeat=1
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false

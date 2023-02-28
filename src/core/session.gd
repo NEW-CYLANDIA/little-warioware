@@ -55,13 +55,20 @@ func get_microgame_scenes() -> void:
 	var dir := Directory.new()
 	dir.open("res://microgames/")
 	dir.list_dir_begin()
-
-	while true:
-		var file = dir.get_next()
-		if file == "":
-			break
-		elif file.get_extension() == "tscn":
-			microgame_scenes.append("res://microgames/" + file)
+	var file = dir.get_next()
+	while file != "":
+		if dir.current_is_dir():
+			var inner_dir := Directory.new();
+			inner_dir.open("res://microgames/" + file)
+			inner_dir.list_dir_begin();
+			var inner_file = inner_dir.get_next();
+			while inner_file != "":
+				if (inner_file.get_extension() == "tscn"):
+					print(inner_file);
+					microgame_scenes.append("res://microgames/" + file + "/" + inner_file)
+				inner_file = inner_dir.get_next();
+			inner_dir.list_dir_end();
+			file = dir.get_next();
 
 	dir.list_dir_end()
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/surrounding_interface.png-5576a299f966f1b1f5fc4ad75b727b13.stex"
+path="res://.import/good job text.png-76771767d3a4ca5d677e23e0bf71907a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://microgames/pick_color/surrounding_interface.png"
-dest_files=[ "res://.import/surrounding_interface.png-5576a299f966f1b1f5fc4ad75b727b13.stex" ]
+source_file="res://microgames/pixelart/good job text.png"
+dest_files=[ "res://.import/good job text.png-76771767d3a4ca5d677e23e0bf71907a.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
