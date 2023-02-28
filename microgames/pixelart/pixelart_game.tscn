@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://microgames/pixelart/pencil.gd" type="Script" id=1]
 [ext_resource path="res://microgames/pixelart/texture_tilemap_converter.gd" type="Script" id=2]
@@ -16,7 +16,8 @@
 [ext_resource path="res://microgames/pixelart/crosshair.png" type="Texture" id=14]
 [ext_resource path="res://microgames/pixelart/color-tileset.png" type="Texture" id=15]
 [ext_resource path="res://microgames/pixelart/ScrollingShader.tres" type="Shader" id=16]
-[ext_resource path="res://addons/kenney_interface_sounds/back_001.wav" type="AudioStream" id=17]
+[ext_resource path="res://addons/kenney_interface_sounds/error_001.wav" type="AudioStream" id=17]
+[ext_resource path="res://src/microgames/instructions.tscn" type="PackedScene" id=18]
 
 [sub_resource type="ShaderMaterial" id=16]
 shader = ExtResource( 16 )
@@ -369,7 +370,7 @@ microgame_name = "Pick the Color!"
 hint_verb = "Pick the Color!"
 camera_anim_path = NodePath("Camera Anim")
 
-[node name="SurroundingInterface" type="Sprite" parent="."]
+[node name="BG" type="Sprite" parent="."]
 material = SubResource( 16 )
 position = Vector2( 255, 192 )
 texture = ExtResource( 6 )
@@ -439,14 +440,22 @@ stream = ExtResource( 17 )
 [node name="Camera Anim" type="AnimationPlayer" parent="."]
 "anims/Camera Zoom Out" = SubResource( 15 )
 
-[node name="WinSFX" type="AudioStreamPlayer2D" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Instructions" parent="CanvasLayer" instance=ExtResource( 18 )]
+lifetime = 0.8
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="WinSFX" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 5 )
 
-[node name="LoseSFX" type="AudioStreamPlayer2D" parent="."]
+[node name="LoseSFX" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 11 )
 
-[node name="Music" type="AudioStreamPlayer2D" parent="."]
+[node name="Music" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 12 )
 autoplay = true
 
 [connection signal="drawing_done" from="Pencil" to="." method="_on_Pencil_drawing_done"]
+[connection signal="instructions_shown" from="CanvasLayer/Instructions" to="." method="_on_Prompt_instructions_shown"]

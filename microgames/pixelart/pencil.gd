@@ -60,8 +60,10 @@ func _input(event: InputEvent) -> void:
 		else:
 			$WrongPixelPlaceSfx.play();
 			
-	dir = Input.get_vector("mg_left", "mg_right", "mg_up", "mg_down")
-	dir.x = floor(dir.x);
-	dir.y = floor(dir.y);
+	dir = Vector2.ZERO;
+	if (event.is_action_pressed("mg_left")): dir = Vector2.LEFT
+	if (event.is_action_pressed("mg_right")): dir = Vector2.RIGHT
+	if (event.is_action_pressed("mg_up")): dir = Vector2.UP
+	if (event.is_action_pressed("mg_down")): dir = Vector2.DOWN
 	target += dir * cell_size;
 	
