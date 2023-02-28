@@ -42,9 +42,10 @@ func world_to_tilemap_pos(pos):
 	return img_tilemap.world_to_map(img_tilemap.to_local(pos));
 func _input(event: InputEvent) -> void:
 	if (event.is_action_pressed("mg_action")):
-		$PixelPlaceSfx.play();
+		
 		var tile_under_pencil = get_tile_under_pos(target);
 		if (tile_under_pencil == -1):
+			$PixelPlaceSfx.play();
 			$Sprite.frame = 0;
 			$Fx.frame = 0;
 			$Sprite.play("press")
