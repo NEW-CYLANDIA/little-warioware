@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/tick_001.wav-171929e58c50e197f729e2b0b6fd9db8.sample"
+
+[deps]
+
+source_file="res://addons/kenney_interface_sounds/tick_001.wav"
+dest_files=[ "res://.import/tick_001.wav-171929e58c50e197f729e2b0b6fd9db8.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
