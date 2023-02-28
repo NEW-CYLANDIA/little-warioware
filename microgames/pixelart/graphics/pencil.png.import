@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/good job text.png-76771767d3a4ca5d677e23e0bf71907a.stex"
+path="res://.import/pencil.png-aa616ddb47f81b511b242948bf116093.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://microgames/pixelart/good job text.png"
-dest_files=[ "res://.import/good job text.png-76771767d3a4ca5d677e23e0bf71907a.stex" ]
+source_file="res://microgames/pixelart/graphics/pencil.png"
+dest_files=[ "res://.import/pencil.png-aa616ddb47f81b511b242948bf116093.stex" ]
 
 [params]
 

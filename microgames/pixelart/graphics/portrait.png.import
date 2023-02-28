@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/color-tileset.png-f501b4e08ff5be4477734e98e134f49f.stex"
+path="res://.import/portrait.png-b84a11a30ab7e94c7404571134186e07.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://microgames/pixelart/color-tileset.png"
-dest_files=[ "res://.import/color-tileset.png-f501b4e08ff5be4477734e98e134f49f.stex" ]
+source_file="res://microgames/pixelart/graphics/portrait.png"
+dest_files=[ "res://.import/portrait.png-b84a11a30ab7e94c7404571134186e07.stex" ]
 
 [params]
 

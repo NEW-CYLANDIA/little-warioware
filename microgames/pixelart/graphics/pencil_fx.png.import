@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pencil_fx.png-aee6d084d8b8e31188ecd6981a520b31.stex"
+path="res://.import/pencil_fx.png-53a2b2cf53e99f9630e23803e211265a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://microgames/pixelart/pencil_fx.png"
-dest_files=[ "res://.import/pencil_fx.png-aee6d084d8b8e31188ecd6981a520b31.stex" ]
+source_file="res://microgames/pixelart/graphics/pencil_fx.png"
+dest_files=[ "res://.import/pencil_fx.png-53a2b2cf53e99f9630e23803e211265a.stex" ]
 
 [params]
 

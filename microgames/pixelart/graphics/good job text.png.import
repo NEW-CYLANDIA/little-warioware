@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/crosshair.png-a618a33f91d71121f197002c65179345.stex"
+path="res://.import/good job text.png-053c1883928215e1b21a86095365193d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://microgames/pixelart/crosshair.png"
-dest_files=[ "res://.import/crosshair.png-a618a33f91d71121f197002c65179345.stex" ]
+source_file="res://microgames/pixelart/graphics/good job text.png"
+dest_files=[ "res://.import/good job text.png-053c1883928215e1b21a86095365193d.stex" ]
 
 [params]
 
