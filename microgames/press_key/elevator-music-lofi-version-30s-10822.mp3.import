@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/elevator-music-lofi-version-30s-10822.mp3-c9ba79ba64ae9e8e005958c8e70db9f5.mp3str"
+
+[deps]
+
+source_file="res://microgames/press_key/elevator-music-lofi-version-30s-10822.mp3"
+dest_files=[ "res://.import/elevator-music-lofi-version-30s-10822.mp3-c9ba79ba64ae9e8e005958c8e70db9f5.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
