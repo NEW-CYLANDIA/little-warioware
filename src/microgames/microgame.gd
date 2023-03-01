@@ -50,7 +50,9 @@ func _ready() -> void:
 	connect("report_result", session, "on_result_reported")
 	connect("microgame_ready", session, "configure_audio_nodes")
 
-	add_child(timer)
+	var ui_parent = CanvasLayer.new();
+	add_child(ui_parent);
+	ui_parent.add_child(timer)
 
 	# let Session know microgame has finished loading
 	emit_signal("microgame_ready", self)
