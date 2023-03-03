@@ -23,3 +23,4 @@ func do_parse_sprite(val:bool):
 			var tile_color = pix.to_html(true).to_upper();
 			if (!tile_color.begins_with("0")):
 				tilemap.set_cell(x, y, tilemap.tile_set.find_tile_by_name(tile_color));
+			else: tilemap.set_cell(x, y, -1);

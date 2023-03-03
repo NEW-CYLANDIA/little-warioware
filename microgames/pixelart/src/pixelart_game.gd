@@ -2,10 +2,11 @@ extends Microgame
 # Called when the node enters the scene tree for the first time.
 
 export(NodePath) var camera_anim_path;
-onready var camera_anim:AnimationPlayer = get_node(camera_anim_path)
 
+var camera_tween:SceneTreeTween;
 func _ready() -> void:
 	timer.stop();
+	camera_tween = create_tween()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:
@@ -13,12 +14,19 @@ func _ready() -> void:
 
 
 func _on_Pencil_drawing_done(is_correct) -> void:
-	camera_anim.play("Camera Zoom Out");
-	var anim_length = camera_anim.get_animation("Camera Zoom Out").length;
 	$Audio/WinSFX.play();
+	print(camera_tween);
 	is_success = true;
-	
-	yield(get_tree().create_timer(anim_length + 1), "timeout");
+	$CameraTween.interpolate_property(
+		$Camera2D, 
+		"zoom", 
+		$Camera2D.zoom, 
+		$FinalCamera.zoom, 
+		0.4,
+		Tween.TRANS_BACK,
+		Tween.EASE_OUT);
+	$CameraTween.start();
+	yield(get_tree().create_timer(0.5), "timeout");
 	emit_signal("report_result", true);
 
 
