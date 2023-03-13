@@ -12,7 +12,7 @@ signal microgame_ready(microgame_node)
 
 # Emitted when timer finishes
 # Reports player success or failure back to current session so score/lives can be updated accordingly
-signal report_result(is_success)
+signal microgame_done(is_success)
 
 # Full title of microgame
 export (String) var microgame_name : String
@@ -40,7 +40,7 @@ var session : Session = Global.current_session
 func _ready() -> void:
 	# if playing microgame in isolation, create a temporary session
 	if !session:
-		session = Global.start_new_session("debug")
+		session = Global.start_new_session("debug") # TODO: Move this
 
 	# set default success state
 	is_success = win_by_default
@@ -55,13 +55,10 @@ func _ready() -> void:
 	var ui_parent = CanvasLayer.new();
 	add_child(ui_parent);
 	ui_parent.add_child(timer)
-
 	# let Session know microgame has finished loading
 	emit_signal("microgame_ready", self)
 
 
 func on_Timer_timeout() -> void:
 	# Let session know the microgame is over
-	emit_signal("report_result", is_success)
-
-	get_tree().change_scene("res://src/play_session/intermission.tscn")
+	emit_signal("microgame_done", is_success)
