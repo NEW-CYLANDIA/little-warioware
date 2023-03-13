@@ -14,7 +14,7 @@ func _ready() -> void:
 
 func on_Button_pressed(mode_name : String) -> void:
 	Global.start_new_session(mode_name)
-	get_tree().change_scene("res://src/play_session/intermission.tscn")
+	get_tree().change_scene(Global.play_scene)
 
 
 func update_high_score_text() -> void:

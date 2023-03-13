@@ -5,9 +5,7 @@ extends Control
 
 
 signal increment_modifier(type)
-signal end_session()
-
-var session : Session = Global.current_session
+signal intermission_done()
 
 onready var timer : Timer = $Timer as Timer
 onready var score_display : RichTextLabel = $ScoreDisplay as RichTextLabel
@@ -16,12 +14,19 @@ onready var sfx_success : AudioStreamPlayer2D = $SuccessSFX as AudioStreamPlayer
 onready var sfx_failure : AudioStreamPlayer2D = $FailureSFX as AudioStreamPlayer2D
 onready var sfx_start : AudioStreamPlayer2D = $StartSFX as AudioStreamPlayer2D
 
+var session : Session
+var last_success : bool
+
+
+func configure(current_session : Session, last_was_success : bool) -> void:
+	session = current_session
+	last_success = last_was_success
+
 
 func _ready() -> void:
-	connect("increment_modifier", session, "increment_modifier")
-	connect("end_session", session, "end_session")
+#	connect("increment_modifier", session, "increment_modifier")
 
-	score_display.text = "Score: " + session.score as String
+	score_display.text = "Score: %d" % session.score
 
 	# TODO: move into Session
 	if session.lives <= 0:
@@ -41,7 +46,7 @@ func _ready() -> void:
 		start_timer()
 		return
 
-	(sfx_success if session.last_success else sfx_failure).play()
+	(sfx_success if last_success else sfx_failure).play()
 
 
 func start_timer() -> void:
@@ -62,11 +67,7 @@ func start_timer() -> void:
 
 
 func on_Timer_timeout() -> void:
-	if session.lives > 0:
-		get_tree().change_scene(session.get_random_microgame())
-	else:
-		emit_signal("end_session")
-		get_tree().change_scene("res://src/menus/menu.tscn")
+	emit_signal("intermission_done")
 
 
 func show_modifier_update(type : String) -> void:
