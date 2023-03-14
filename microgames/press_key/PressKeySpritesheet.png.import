@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/PressKeySpritesheet.png-157016ea712456a0cd004fc3b91c81fa.stex"
+path="res://.import/PressKeySpritesheet.png-d2dc4eeb2055066bb5b325c0f840c159.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://microgames/PressKeySpritesheet.png"
-dest_files=[ "res://.import/PressKeySpritesheet.png-157016ea712456a0cd004fc3b91c81fa.stex" ]
+source_file="res://microgames/press_key/PressKeySpritesheet.png"
+dest_files=[ "res://.import/PressKeySpritesheet.png-d2dc4eeb2055066bb5b325c0f840c159.stex" ]
 
 [params]
 
