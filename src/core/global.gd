@@ -10,7 +10,7 @@ const play_scene : String = "res://src/play_session/session.tscn"
 
 var modes : Dictionary
 
-var current_session : Session
+var current_session : Session = null
 
 
 func _ready() -> void:
@@ -20,11 +20,12 @@ func _ready() -> void:
 			modes[mode.name] = mode
 
 
-func start_new_session(mode_name : String):
+func start_new_session(mode_name : String) -> void:
 	current_session = Session.new(mode_name)
+	get_tree().change_scene(Global.play_scene)
 
-	return current_session
 
-
-func end_session() -> void:
-	current_session.queue_free()
+func end_current_session() -> void:
+	current_session.end_session()
+	current_session = null
+	get_tree().change_scene(Global.menu_scene)

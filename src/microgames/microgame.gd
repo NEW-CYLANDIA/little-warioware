@@ -36,10 +36,6 @@ var session : Session = Global.current_session
 
 
 func _ready() -> void:
-	# if playing microgame in isolation, create a temporary session
-	if !session:
-		session = Global.start_new_session("debug") # TODO: Move this
-
 	# set default success state
 	is_success = win_by_default
 
