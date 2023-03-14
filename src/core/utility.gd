@@ -25,13 +25,13 @@ func list_all_files(var path : String, var extension : String = "") -> Array:
 	dir.list_dir_begin(true, true)
 
 	while true:
-		var is_directory : bool = dir.current_is_dir()
 		var file : String = dir.get_next()
+		var is_directory : bool = dir.current_is_dir()
 		if file == "":
 			break
 		file = "%s/%s" % [path, file]
 		if is_directory:
-			files.append_array(list_all_files(file))
+			files.append_array(list_all_files(file, extension))
 		elif not filter or file.get_extension() == extension:
 			files.append(file)
 
