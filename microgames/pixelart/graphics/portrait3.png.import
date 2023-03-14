@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/wario.png-d64a4491e427aca23cf4d631f4b2f73b.stex"
+path="res://.import/portrait3.png-3b9048a257027070744bfe56f678bbad.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://microgames/pixelart/graphics/wario.png"
-dest_files=[ "res://.import/wario.png-d64a4491e427aca23cf4d631f4b2f73b.stex" ]
+source_file="res://microgames/pixelart/graphics/portrait3.png"
+dest_files=[ "res://.import/portrait3.png-3b9048a257027070744bfe56f678bbad.stex" ]
 
 [params]
 

@@ -44,7 +44,8 @@ func _input(event: InputEvent) -> void:
 	if (event.is_action_pressed("mg_action")):
 		
 		var tile_under_pencil = get_tile_under_pos(target);
-		if (tile_under_pencil == -1):
+		var tile_name = img_tilemap.tile_set.tile_get_name(tile_under_pencil);
+		if (tile_under_pencil == "000000"):
 			$PixelPlaceSfx.play();
 			$Sprite.frame = 0;
 			$Fx.frame = 0;
