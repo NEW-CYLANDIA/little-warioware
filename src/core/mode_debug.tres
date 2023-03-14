@@ -6,7 +6,7 @@
 script = ExtResource( 1 )
 name = "debug"
 starting_lives = 1
-starting_level = 0
+starting_level = 1
 starting_speed = 1
-level_up_interval = 3
+level_up_interval = 5
 speed_up_interval = 1
