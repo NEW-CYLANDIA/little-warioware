@@ -48,7 +48,9 @@ func _ready() -> void:
 
 	timer.connect("timeout", self, "on_Timer_timeout")
 
-	add_child(timer)
+	var ui_parent = CanvasLayer.new();
+	add_child(ui_parent);
+	ui_parent.add_child(timer)
 
 	# let Session know microgame has finished loading
 	emit_signal("microgame_ready", self)
