@@ -4,3 +4,5 @@
 *.tscn text eol=lf
 *.tres text eol=lf
 *.godot text eol=lf
+*.gd text eol=lf
+*.import text eol=lf
