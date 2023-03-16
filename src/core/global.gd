@@ -25,6 +25,24 @@ func start_new_session(mode_name : String) -> void:
 	get_tree().change_scene(Global.play_scene)
 
 
+func start_new_single_session() -> void:
+	var microgame_scene : String = ""
+	for arg in OS.get_cmdline_args():
+		if arg.begins_with("res://") and arg.ends_with(".tscn"):
+			microgame_scene = arg
+	# Early return if we didn't find the actual scene, or if we're not in the editor.
+	if microgame_scene.length() <= 0 or not OS.has_feature("editor"):
+		return
+
+	start_new_session("debug")
+
+	# Wait for one frame for the scene to change
+	yield(get_tree(), "idle_frame")
+
+	# Only keep the current microgame in the loaded list.
+	get_tree().current_scene.microgame_scenes = [ load(microgame_scene) ]
+
+
 func end_current_session() -> void:
 	current_session.end_session()
 	current_session = null
