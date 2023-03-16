@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/353925__dr_skitz__boo.wav-9649d0b85acb7c70d2a667fcb1f20ad0.sample"
+
+[deps]
+
+source_file="res://microgames/press_key/353925__dr_skitz__boo.wav"
+dest_files=[ "res://.import/353925__dr_skitz__boo.wav-9649d0b85acb7c70d2a667fcb1f20ad0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
