@@ -6,7 +6,7 @@ extends Node
 enum difficulty { EASY = 1, MEDIUM = 2, HARD = 3 }
 
 const menu_scene : String = "res://src/menus/menu.tscn"
-const play_scene : String = "res://src/play_session/session.tscn"
+const play_scene : String = "res://src/play_session/play.tscn"
 
 var modes : Dictionary
 
