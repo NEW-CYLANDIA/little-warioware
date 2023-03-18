@@ -36,6 +36,12 @@ var session : Session = Global.current_session
 
 
 func _ready() -> void:
+	# Debug mode, allow looping the same game over and over when the scene is
+	# ran on its own.
+	if OS.has_feature("editor") and session == null:
+		Global.start_new_single_session()
+		session = Global.current_session
+
 	# set default success state
 	is_success = win_by_default
 

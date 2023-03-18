@@ -59,3 +59,5 @@
 
 - Try and comment your code
 - Write small and targeted method, not long and complicated ones
+- Do not leave large blocks of commented code in the codebase
+- Do not leave useless or debugging print calls in the codebase
