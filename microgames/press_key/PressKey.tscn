@@ -3,9 +3,9 @@
 [ext_resource path="res://microgames/press_key/PressKey.gd" type="Script" id=1]
 [ext_resource path="res://src/microgames/microgame.tscn" type="PackedScene" id=2]
 [ext_resource path="res://microgames/press_key/PressKeySpritesheet.png" type="Texture" id=3]
-[ext_resource path="res://microgames/press_key/Y2Mate.is - Children Yay!   Sound Effect-attUrDwfdr8-128k-1655510583103.wav" type="AudioStream" id=4]
-[ext_resource path="res://microgames/press_key/Y2Mate.is - Kids Booing (Sound Effect)-cpGLDPbFT-c-128k-1655078038574.wav" type="AudioStream" id=5]
-[ext_resource path="res://microgames/press_key/elevator-music-lofi-version-30s-10822.mp3" type="AudioStream" id=6]
+[ext_resource path="res://microgames/press_key/353925__dr_skitz__boo.wav" type="AudioStream" id=4]
+[ext_resource path="res://microgames/press_key/333404__jayfrosting__cheer-2.wav" type="AudioStream" id=5]
+[ext_resource path="res://microgames/press_key/587897__seth_makes_sounds__lofi.wav" type="AudioStream" id=6]
 
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 510, 10 )
@@ -112,10 +112,10 @@ playing = true
 shape = SubResource( 10 )
 
 [node name="WinSFX" type="AudioStreamPlayer2D" parent="." index="5"]
-stream = ExtResource( 4 )
+stream = ExtResource( 5 )
 
 [node name="LoseSFX" type="AudioStreamPlayer2D" parent="." index="6"]
-stream = ExtResource( 5 )
+stream = ExtResource( 4 )
 
 [node name="Music" type="AudioStreamPlayer2D" parent="." index="7"]
 stream = ExtResource( 6 )
