@@ -25,7 +25,7 @@ func _ready() -> void:
 #	pass
 
 
-func _on_Pencil_drawing_done(is_correct) -> void:
+func _on_Pencil_drawing_done() -> void:
 	$Audio/WinSFX.play();
 	is_success = true;
 	$CameraTween.interpolate_property(

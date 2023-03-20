@@ -22,7 +22,7 @@ var cell_size = 16;
 
 var target = Vector2();
 
-signal drawing_done(is_correct);
+signal drawing_done();
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -57,7 +57,7 @@ func _input(event: InputEvent) -> void:
 			if (pixels_drawn >= pixels_to_draw):
 				yield(get_tree().create_timer(0.2), "timeout")
 				visible = false;
-				emit_signal("drawing_done", true);
+				emit_signal("drawing_done");
 		else:
 			$WrongPixelPlaceSfx.play();
 			
