@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/microgames/microgame_definition.gd"
 }, {
+"base": "Node2D",
+"class": "Pencil",
+"language": "GDScript",
+"path": "res://microgames/pixelart/src/pencil.gd"
+}, {
 "base": "Node",
 "class": "Session",
 "language": "GDScript",
@@ -33,6 +38,7 @@ _global_script_class_icons={
 "GameMode": "",
 "Microgame": "",
 "MicrogameDefinition": "",
+"Pencil": "",
 "Session": ""
 }
 
