@@ -30,7 +30,7 @@ func _ready() -> void:
 		
 	#$Sprite.modulate = img_tilemap.tile_set.tile_get_name(correct_choice);
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	position = position.linear_interpolate(target, 0.2);
 	$Sprite.scale = $Sprite.scale.linear_interpolate(Vector2.ONE, 0.1);
 
@@ -45,7 +45,6 @@ func _input(event: InputEvent) -> void:
 		
 		var tile_under_pencil = get_tile_under_pos(target);
 		var tile_name = img_tilemap.tile_set.tile_get_name(tile_under_pencil);
-		print(tile_name);
 		if (tile_name == "00000000"):
 			$PixelPlaceSfx.play();
 			$Sprite.frame = 0;

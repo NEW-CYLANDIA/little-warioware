@@ -12,7 +12,7 @@ export var parse_sprite = false setget do_parse_sprite;
 func _ready() -> void:
 	pass # Replace with function body.
 	
-func do_parse_sprite(val:bool):
+func do_parse_sprite(_val:bool):
 	sprite = get_node(sprite_path);
 	tilemap = get_node(tilemap_path);
 	var tex = sprite.texture.get_data();

@@ -3,10 +3,8 @@ extends Microgame
 
 export(NodePath) var pencil_path;
 onready var pencil:Pencil = get_node(pencil_path);
-var camera_tween:SceneTreeTween;
 func _ready() -> void:
 	timer.stop();
-	camera_tween = create_tween()
 	var target_image:TileMap;
 	if (session.level == Global.difficulty.EASY):
 		target_image = $Image
@@ -29,7 +27,6 @@ func _ready() -> void:
 
 func _on_Pencil_drawing_done(is_correct) -> void:
 	$Audio/WinSFX.play();
-	print(camera_tween);
 	is_success = true;
 	$CameraTween.interpolate_property(
 		$Camera2D, 
@@ -41,8 +38,6 @@ func _on_Pencil_drawing_done(is_correct) -> void:
 		Tween.EASE_OUT);
 	$CameraTween.start();
 	yield(get_tree().create_timer(0.5), "timeout");
-	emit_signal("report_result", true);
-
 
 
 func _on_Prompt_instructions_shown() -> void:
