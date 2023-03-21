@@ -64,7 +64,7 @@ gdscript/warnings/return_value_discarded=false
 
 [editor_plugins]
 
-enabled=PoolStringArray(  )
+enabled=PoolStringArray( "res://addons/version_checker/plugin.cfg" )
 
 [input]
 
