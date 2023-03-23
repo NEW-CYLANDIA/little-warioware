@@ -1,0 +1,96 @@
+# This file handles lints the game, builds it, and uploads to Itch when changes are pushed.
+# Please do not modify this file unless you have very good reason to do so, as it will likely break the game for everyone else.
+
+name: Build and Publish
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore: # do not build for game-irrelvant changes
+      - ".**"
+      - "LICENSE"
+      - "ACKNOWLEDGEMENTS"
+      - "**.md"
+
+jobs:
+  # Runs the "gdformat" auto-formatter
+  format_code:
+    permissions:
+      contents: write
+
+    runs-on: ubuntu-latest
+
+    # Since auto-formatting creates a commit, we need to make sure we don't create an infinite loop
+    if: "!contains(github.event.head_commit.message, 'Auto-Format GDScript')"
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-python@v3
+        with:
+          python-version: 3.x
+
+      - run: pip3 install 'gdtoolkit==3.*'
+
+      - run: gdformat **/*.gd
+
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Auto-Format GDScript
+          commit_user_name: Little Waluigi
+          file_pattern: "**/*.gd"
+
+  build_game:
+    name: Build Game
+    # Besides skipping autoformat commits, we can manually apply a label to skip releasing
+    if: ${{ github.event.label.name != 'skip release' && !contains(github.event.head_commit.message, 'Auto-Format GDScript') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout latest code
+        uses: actions/checkout@v3
+
+      - name: update credits
+        uses: actions/github-script@v3
+        with:
+          script: |
+            const path = require('path');
+            const script = require(path.resolve('.github/workflows/update-credits.js'));
+            await script(github, context)
+
+      - name: Add credits.txt to build artifacts list
+        uses: actions/upload-artifact@v3
+        with:
+          name: credits
+          path: credits.txt
+
+      - name: export with Godot Engine and release on GitHub
+        uses: firebelley/godot-export@v5.0.0
+        with:
+          godot_executable_download_url: https://downloads.tuxfamily.org/godotengine/3.5.2/Godot_v3.5.2-stable_linux_headless.64.zip
+          godot_export_templates_download_url: https://downloads.tuxfamily.org/godotengine/3.5.2/Godot_v3.5.2-stable_export_templates.tpz
+          relative_project_path: .
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  upload_game:
+    runs-on: ubuntu-latest
+    name: Publish Game
+    needs: [build_game]
+    steps:
+      - name: download latest HTML5 build
+        id: download-html
+        uses: dsaltares/fetch-gh-release-asset@master
+        with:
+          version: "latest"
+          file: HTML5.zip
+          token: "${{ secrets.GITHUB_TOKEN }}"
+
+      - name: deploy to itch.io
+        uses: josephbmanley/butler-publish-itchio-action@master
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.ITCH_API_KEY }}
+          CHANNEL: html
+          ITCH_GAME: little-warioware
+          ITCH_USER: new-cylandia
+          PACKAGE: HTML5.zip
+          VERSION: ${{ steps.download-html.outputs.version }}
