@@ -29,14 +29,8 @@ jobs:
 
       - run: pip3 install 'gdtoolkit==3.*'
 
-      - run: ls
-
-      - run: ls src
-
-      - run: ls src/**/*.gd
-
-      - run: ls **/*.gd
-
+      # We should be able to just do **/*.gd, but it's failing for an unspecified reapson
+      # This is ~fine~
       - run: gdformat src/**/*.gd
 
       - uses: stefanzweifel/git-auto-commit-action@v4
@@ -76,8 +70,7 @@ jobs:
           relative_project_path: ./
           relative_export_path: ./export
           archive_output: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          use_godot_3: true
 
   upload_game:
     runs-on: ubuntu-latest
