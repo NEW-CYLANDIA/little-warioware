@@ -3,20 +3,19 @@ extends Control
 # Displays current lives remaining, score,
 # and increases in speed/difficulty
 
+signal intermission_done
 
-signal intermission_done()
+onready var timer: Timer = $Timer as Timer
+onready var score_display: RichTextLabel = $ScoreDisplay as RichTextLabel
+onready var status_up: AnimatedSprite = $StatusUp as AnimatedSprite
+onready var sfx_success: AudioStreamPlayer2D = $SuccessSFX as AudioStreamPlayer2D
+onready var sfx_failure: AudioStreamPlayer2D = $FailureSFX as AudioStreamPlayer2D
+onready var sfx_start: AudioStreamPlayer2D = $StartSFX as AudioStreamPlayer2D
 
-onready var timer : Timer = $Timer as Timer
-onready var score_display : RichTextLabel = $ScoreDisplay as RichTextLabel
-onready var status_up : AnimatedSprite = $StatusUp as AnimatedSprite
-onready var sfx_success : AudioStreamPlayer2D = $SuccessSFX as AudioStreamPlayer2D
-onready var sfx_failure : AudioStreamPlayer2D = $FailureSFX as AudioStreamPlayer2D
-onready var sfx_start : AudioStreamPlayer2D = $StartSFX as AudioStreamPlayer2D
-
-var last_success : bool
+var last_success: bool
 
 
-func configure(last_was_success : bool) -> void:
+func configure(last_was_success: bool) -> void:
 	last_success = last_was_success
 
 
@@ -64,7 +63,7 @@ func on_Timer_timeout() -> void:
 	emit_signal("intermission_done")
 
 
-func show_modifier_update(type : String) -> void:
+func show_modifier_update(type: String) -> void:
 	status_up.animation = type
 	status_up.visible = true
 	timer.wait_time *= 2

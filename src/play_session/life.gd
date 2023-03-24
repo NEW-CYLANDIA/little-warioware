@@ -1,7 +1,6 @@
 extends TextureRect
 
-
-export var index : int
+export var index: int
 
 
 func _ready() -> void:

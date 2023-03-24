@@ -1,8 +1,7 @@
 extends Control
 # Main menu
 
-
-onready var score_display : RichTextLabel = $ScoreDisplay as RichTextLabel
+onready var score_display: RichTextLabel = $ScoreDisplay as RichTextLabel
 
 
 func _ready() -> void:
@@ -12,7 +11,7 @@ func _ready() -> void:
 	update_high_score_text()
 
 
-func on_Button_pressed(mode_name : String) -> void:
+func on_Button_pressed(mode_name: String) -> void:
 	Global.start_new_session(mode_name)
 
 

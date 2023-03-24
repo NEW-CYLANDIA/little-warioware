@@ -3,8 +3,7 @@ class_name Microgame
 # Base class for creating a microgame
 # Custom microgames should extend this
 
-
-var timer_scene : PackedScene = preload("res://src/play_session/microgame_timer.tscn")
+var timer_scene: PackedScene = preload("res://src/play_session/microgame_timer.tscn")
 
 # Emitted when microgame _ready() is complete
 # Allows Session to do some last second config
@@ -19,24 +18,24 @@ signal microgame_done(is_success)
 signal play_yaynay(status)
 
 # Full title of microgame
-export (String) var microgame_name : String
+export(String) var microgame_name: String
 
 # Short hint string to display when microgame starts
 # Can be modified per play (e.g. different for higher difficulty levels)
-export (String) var hint_verb : String
+export(String) var hint_verb: String
 
 # Default success state for microgame
 # Use "is_success" to update player's current success state
-export (bool) var win_by_default : bool = false
+export(bool) var win_by_default: bool = false
 
 # Set _true_ to report a win on microgame complete or _false_ to report a loss
-var is_success : bool = false
+var is_success: bool = false
 
 # Reference to countdown timer before microgame ends
-var timer : Timer
+var timer: Timer
 
 # Reference to current session
-var session : Session = Global.current_session
+var session: Session = Global.current_session
 
 
 func _ready() -> void:
@@ -54,8 +53,8 @@ func _ready() -> void:
 
 	timer.connect("timeout", self, "on_Timer_timeout")
 
-	var ui_parent = CanvasLayer.new();
-	add_child(ui_parent);
+	var ui_parent = CanvasLayer.new()
+	add_child(ui_parent)
 	ui_parent.add_child(timer)
 
 	# let Session know microgame has finished loading
