@@ -9,7 +9,7 @@ name: Publish Pull Request Preview
 
 on:
   workflow_run:
-    workflows: ["Build PR"]
+    workflows: ["Build Pull Request Preview"]
     types:
       - completed
 
