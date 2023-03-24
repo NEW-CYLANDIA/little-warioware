@@ -7,11 +7,11 @@ on:
   push:
     branches:
       - main
-    # paths-ignore: # do not build for game-irrelvant changes
-    #   - ".**"
-    #   - "LICENSE"
-    #   - "ACKNOWLEDGEMENTS"
-    #   - "**.md"
+    paths-ignore: # do not build for game-irrelvant changes
+      - ".**"
+      - "LICENSE"
+      - "ACKNOWLEDGEMENTS"
+      - "**.md"
 
 jobs:
   # Runs the "gdformat" auto-formatter
