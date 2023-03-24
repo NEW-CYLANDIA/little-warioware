@@ -2,6 +2,8 @@
 
 ### [Playable build on itch.io](https://iznaut.itch.io/little-warioware?password=newcylandia)
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [cc-by-shield]: https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg
+
 ## What is this?
 
 Little Warioware is an open-source clone of [Nintendo's WarioWare series](<https://www.mariowiki.com/WarioWare_(series)>), in which players must survive a gauntlet of randomized "microgames" (games with a simple objective and a time limit of less than 10 seconds).
@@ -27,3 +29,11 @@ At some point I will formalize the rules and guidelines for making microgames an
 - [WarioWare D.I.Y.](https://www.mariowiki.com/WarioWare:_D.I.Y.) - An overview of Nintendo's own attempt at a WarioWare that includes tools for user-generated content (a stretch goal for this project would be to similarly include tools that make it easy for non-programmers to create microgames!)
 
 You can also read my [more rambly notes on Notion](https://iznaut.notion.site/Little-Warioware-c289be2b77fe4b478a5bf1ad66cef8b5), if you really want to.
+
+## Project Licensing
+
+The source code for this project is licensed under the MIT License. A copy of this license can be found in the `LICENSE.md` file in this repo.
+Non-code assets for this project are licensed under the [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
+Additionally, `ATTRIBUTION.md` contains credits for third-party assets not covered under either of those licenses.
+
+This project is licensed under extremely generous terms. Our intent is that you are welcome to liberally borrow code or assets from this project (given appropriate crediting and all other licensing terms are met), but we ask that you not rip off whole microgames or the entire game, and that you not attempt to financially profit from this work.
