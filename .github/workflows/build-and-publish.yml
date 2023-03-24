@@ -85,12 +85,11 @@ jobs:
           file: HTML5.zip
           token: "${{ secrets.GITHUB_TOKEN }}"
 
-      - name: deploy to itch.io
-        uses: josephbmanley/butler-publish-itchio-action@master
-        env:
-          BUTLER_CREDENTIALS: ${{ secrets.ITCH_API_KEY }}
-          CHANNEL: html
-          ITCH_GAME: little-warioware
-          ITCH_USER: new-cylandia
-          PACKAGE: HTML5.zip
-          VERSION: ${{ steps.download-html.outputs.version }}
+    - name: Deploy to Itch
+        uses: KikimoraGames/itch-publish@v0.0.3
+        with:
+          butlerApiKey: ${{secrets.ITCH_API_KEY}}
+          gameData: ./export/HTML5.zip
+          itchUsername: new-cylandia
+          itchGameId: little-warioware
+          buildChannel: win
