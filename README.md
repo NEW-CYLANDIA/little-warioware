@@ -39,3 +39,5 @@ Non-code assets for this project are licensed under the [Creative Commons Attrib
 Additionally, `ATTRIBUTION.md` contains credits for third-party assets not covered under either of those licenses.
 
 This project is licensed under extremely generous terms. Our intent is that you are welcome to liberally borrow code or assets from this project (given appropriate crediting and all other licensing terms are met), but we ask that you not rip off whole microgames or the entire game, and that you not attempt to financially profit from this work.
+
+Babba booey
