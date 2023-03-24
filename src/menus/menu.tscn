@@ -25,7 +25,7 @@ margin_bottom = 23.0
 margin_right = 400.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 400, 0 )
-text = "Play"
+text = "Play Me!"
 
 [node name="PlayDebug" type="Button" parent="HSplitContainer"]
 margin_left = 412.0
