@@ -41,6 +41,8 @@ jobs:
       - name: Unzip artifact
         run: unzip pr.zip; rm pr.zip
 
+      - run: ls
+
       - name: Store PR info in ENV
         run: |
           PR_NUMBER=$(cat pr_number)
