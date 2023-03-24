@@ -1,0 +1,124 @@
+# This workflow takes a previously-built PR copy of the game
+# and uploads it to Netlify as a preview deployment,
+# also dropping a link to that deploy into the PR comments
+#
+# See https://securitylab.github.com/research/github-actions-preventing-pwn-requests
+# for context why this is two workflows instead of one.
+
+name: Test and Deploy PRs
+
+on:
+  workflow_run:
+    workflows: ["Build PR"]
+    types:
+      - completed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Download build artifact"
+        uses: actions/github-script@v3.1.0
+        with:
+          script: |
+            var artifacts = await github.actions.listWorkflowRunArtifacts({
+               owner: context.repo.owner,
+               repo: context.repo.repo,
+               run_id: ${{ github.event.workflow_run.id }},
+            });
+            var matchArtifact = artifacts.data.artifacts.filter((artifact) => {
+              return artifact.name == "pr"
+            })[0];
+            var download = await github.actions.downloadArtifact({
+               owner: context.repo.owner,
+               repo: context.repo.repo,
+               artifact_id: matchArtifact.id,
+               archive_format: 'zip',
+            });
+            var fs = require('fs');
+            fs.writeFileSync('${{github.workspace}}/pr.zip', Buffer.from(download.data));
+
+      - name: Unzip artifact
+        run: unzip pr.zip; rm pr.zip
+
+      - name: Store PR info in ENV
+        run: |
+          PR_NUMBER=$(cat pr_number)
+          echo "PR_NUMBER=$PR_NUMBER" >> $GITHUB_ENV
+          rm pr_number
+          PR_TITLE=$(cat pr_title)
+          echo "PR_TITLE=$PR_TITLE" >> $GITHUB_ENV
+          rm pr_title
+          PR_SENDER=$(cat pr_sender)
+          echo "PR_SENDER=$PR_SENDER" >> $GITHUB_ENV
+          rm pr_sender
+          PR_ACTION=$(cat pr_action)
+          echo "PR_ACTION=$PR_ACTION" >> $GITHUB_ENV
+          rm pr_action
+
+ - name: Build And Deploy
+        id: azure-deploy
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_POLITE_GLACIER_037563110 }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
+          action: "upload"
+          ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
+          # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
+          skip_app_build: true
+          skip_api_build: true
+          app_location: "/" # App source code path
+          api_location: "" # Api source code path - optional
+          output_location: "" # Built app content directory - optional
+          ###### End of Repository/Build Configurations ######
+
+      # - name: Netlify preview deploy
+      #   uses: nwtgck/actions-netlify@v1.2
+      #   id: netlify-deploy
+      #   with:
+      #     publish-dir: "."
+      #     github-token: ${{ secrets.GITHUB_TOKEN }}
+      #     deploy-message: "You can test out these proposed changes!"
+      #     alias: pr-${{ env.PR_NUMBER }}
+      #   env:
+      #     NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+      #     NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+
+      - name: "Comment on PR with link to preview"
+        uses: actions/github-script@v3
+        with:
+          script: |
+            var fs = require('fs');
+            var issue_number = process.env.PR_NUMBER
+            await github.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issue_number,
+              body: '🎉 Please test your changes using this link! ✨👉 ${{steps.azure-deploy.outputs.static_web_app_url}} 👈✨'
+            });
+      # TODO: Fix these
+      
+      # - name: Discord notification
+      #   if: ${{ env.PR_ACTION == 'opened' || env.PR_ACTION == 'reopened' }}
+      #   env:
+      #     DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+      #   uses: Ilshidur/action-discord@master
+      #   with:
+      #     args: "🎉 Test build for PR#${{env.PR_NUMBER}} ✨👉 ${{steps.azure-deploy.outputs.static_web_app_url}} 👈✨"
+      # - uses: Eomm/why-don-t-you-tweet@v1
+      #   if: ${{ env.PR_ACTION == 'opened' }}
+      #   with:
+      #     tweet-message: |
+      #       ✨ proposed change #${{env.PR_NUMBER}} by ${{env.PR_SENDER}} ✨
+
+      #       "${{env.PR_TITLE}}"
+
+      #       🎮 play in your browser: ${{env.BUILD_URL}} 🎮
+
+      #       ${{ github.server_url }}/${{ github.repository }}/pull/${{env.PR_NUMBER}}
+      #   env:
+      #     BUILD_URL: ${{ steps.azure-deploy.outputs.static_web_app_url }}
+      #     TWITTER_CONSUMER_API_KEY: ${{ secrets.TWITTER_CONSUMER_API_KEY }}
+      #     TWITTER_CONSUMER_API_SECRET: ${{ secrets.TWITTER_CONSUMER_API_SECRET }}
+      #     TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+      #     TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
