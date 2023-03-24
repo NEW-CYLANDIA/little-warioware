@@ -39,7 +39,7 @@ jobs:
             fs.writeFileSync('${{github.workspace}}/pr.zip', Buffer.from(download.data));
 
       - name: Unzip artifact
-        run: unzip pr.zip; rm pr.zip; unzip HTML5.zip;
+        run: unzip pr.zip; rm pr.zip; unzip HTML5.zip
 
       - run: ls
 
