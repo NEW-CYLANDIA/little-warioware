@@ -33,8 +33,7 @@ func _input(event):
 		if win_by_default:
 			is_success = false
 			press_sprite.animation = "lose"
-			$LoseSFX.play()
 		else:
 			is_success = true
 			press_sprite.animation = "win"
-			$WinSFX.play()			
+		emit_signal("play_yaynay", is_success)

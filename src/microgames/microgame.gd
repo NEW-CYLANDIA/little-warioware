@@ -14,6 +14,10 @@ signal microgame_ready(microgame_node)
 # Reports player success or failure back to current session so score/lives can be updated accordingly
 signal microgame_done(is_success)
 
+# Emitted when we need a win or lose sound
+# warning-ignore: UNUSED_SIGNAL
+signal play_yaynay(status)
+
 # Full title of microgame
 export (String) var microgame_name : String
 
