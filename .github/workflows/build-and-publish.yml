@@ -40,7 +40,7 @@ jobs:
           file_pattern: "**/*.gd"
 
   build_game:
-    name: Build Game
+    name: Build and Publish Game
     # Besides skipping autoformat commits, we can manually apply a label to skip releasing
     if: ${{ github.event.label.name != 'skip release' && !contains(github.event.head_commit.message, 'Auto-Format GDScript') }}
     runs-on: ubuntu-latest
@@ -62,7 +62,7 @@ jobs:
           name: credits
           path: credits.txt
 
-      - name: export with Godot Engine and release on GitHub
+      - name: export with Godot Engine
         uses: firebelley/godot-export@v5.0.0
         with:
           godot_executable_download_url: https://downloads.tuxfamily.org/godotengine/3.5.1/Godot_v3.5.1-stable_linux_headless.64.zip
@@ -71,19 +71,6 @@ jobs:
           relative_export_path: ./export
           archive_output: true
           use_godot_3: true
-
-  upload_game:
-    runs-on: ubuntu-latest
-    name: Publish Game
-    needs: [build_game]
-    steps:
-      - name: download latest HTML5 build
-        id: download-html
-        uses: dsaltares/fetch-gh-release-asset@master
-        with:
-          version: "latest"
-          file: HTML5.zip
-          token: "${{ secrets.GITHUB_TOKEN }}"
 
       - name: Deploy to Itch
         uses: KikimoraGames/itch-publish@v0.0.3
