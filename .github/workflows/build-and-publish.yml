@@ -29,11 +29,13 @@ jobs:
 
       - run: pip3 install 'gdtoolkit==3.*'
 
-      - run: ls **/*.gd
+      - run: ls
 
       - run: ls src
 
       - run: ls src/**/*.gd
+
+      - run: ls **/*.gd
 
       - run: gdformat src/**/*.gd
 
