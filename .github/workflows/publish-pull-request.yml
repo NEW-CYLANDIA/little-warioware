@@ -5,7 +5,7 @@
 # See https://securitylab.github.com/research/github-actions-preventing-pwn-requests
 # for context why this is two workflows instead of one.
 
-name: Test and Deploy PRs
+name: Publish Pull Request Preview
 
 on:
   workflow_run:
@@ -39,7 +39,7 @@ jobs:
             fs.writeFileSync('${{github.workspace}}/pr.zip', Buffer.from(download.data));
 
       - name: Unzip artifact
-        run: unzip pr.zip; rm pr.zip
+        run: unzip pr.zip; rm pr.zip; unzip HTML5.zip;
 
       - run: ls
 
