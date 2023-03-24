@@ -7,18 +7,15 @@ on:
   push:
     branches:
       - main
-    paths-ignore: # do not build for game-irrelvant changes
-      - ".**"
-      - "LICENSE"
-      - "ACKNOWLEDGEMENTS"
-      - "**.md"
+    # paths-ignore: # do not build for game-irrelvant changes
+    #   - ".**"
+    #   - "LICENSE"
+    #   - "ACKNOWLEDGEMENTS"
+    #   - "**.md"
 
 jobs:
   # Runs the "gdformat" auto-formatter
   format_code:
-    permissions:
-      contents: write
-
     runs-on: ubuntu-latest
 
     # Since auto-formatting creates a commit, we need to make sure we don't create an infinite loop
@@ -31,6 +28,8 @@ jobs:
           python-version: 3.x
 
       - run: pip3 install 'gdtoolkit==3.*'
+
+      - run: ls
 
       - run: gdformat **/*.gd
 
