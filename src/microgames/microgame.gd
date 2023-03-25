@@ -3,7 +3,7 @@ class_name Microgame
 # Base class for creating a microgame
 # Custom microgames should extend this
 
-var timer_scene: PackedScene = preload("res://src/play_session/microgame_timer.tscn")
+var timer_scene: PackedScene = preload("res://src/microgames/microgame_timer.tscn")
 
 # Emitted when microgame _ready() is complete
 # Allows Session to do some last second config
