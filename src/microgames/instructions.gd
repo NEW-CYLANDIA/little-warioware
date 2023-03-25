@@ -1,15 +1,20 @@
-extends Label
+extends Timer
+class_name Instructions
 
-export var lifetime: float = 1
-signal instructions_shown
+onready var prompt: Label = $Prompt as Label
 
 
 func _ready() -> void:
-	$Timer.start(lifetime)
+	prompt.hide()
 
 
-func _on_Timer_timeout() -> void:
-	$FadeOutAnim.play("FadeOut")
-	emit_signal("instructions_shown")
-	yield($FadeOutAnim, "animation_finished")
-	queue_free()
+func show(prompt_text: String, time: float = 1.0) -> void:
+	wait_time = time
+
+	prompt.text = prompt_text
+	prompt.show()
+
+	start()
+
+	yield(self, "timeout")
+	($FadeOutAnim as AnimationPlayer).play("FadeOut")
