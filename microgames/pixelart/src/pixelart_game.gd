@@ -1,10 +1,8 @@
 extends Microgame
+# Called when the node enters the scene tree for the first time.
 
 export(NodePath) var pencil_path;
-
 onready var pencil:Pencil = get_node(pencil_path);
-
-
 func _ready() -> void:
 	timer.stop();
 	var target_image:TileMap;
@@ -22,9 +20,13 @@ func _ready() -> void:
 	target_image.visible = true;
 	pencil.img_tilemap = target_image;
 
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta: float) -> void:
+#	pass
+
 
 func _on_Pencil_drawing_done() -> void:
-	emit_signal("play_yaynay", true)
+	$Audio/WinSFX.play();
 	is_success = true;
 	$CameraTween.interpolate_property(
 		$Camera2D, 
