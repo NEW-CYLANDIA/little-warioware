@@ -47,7 +47,7 @@
 - Always prefer static types to dynamic types
   ```gdscript
   # Do this
-  func add(n : int, m : int) -> int:
+  func add(n: int, m: int) -> int:
       return n + m
 
   # Not this
