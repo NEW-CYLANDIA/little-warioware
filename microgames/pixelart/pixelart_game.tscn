@@ -1,13 +1,15 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://microgames/pixelart/src/pencil.gd" type="Script" id=1]
 [ext_resource path="res://microgames/pixelart/src/texture_tilemap_converter.gd" type="Script" id=2]
 [ext_resource path="res://microgames/pixelart/src/pixelart_game.gd" type="Script" id=3]
 [ext_resource path="res://microgames/pixelart/graphics/portrait3.png" type="Texture" id=4]
+[ext_resource path="res://microgames/press_key/333404__jayfrosting__cheer-2.wav" type="AudioStream" id=5]
 [ext_resource path="res://microgames/pixelart/graphics/surrounding_interface.png" type="Texture" id=6]
 [ext_resource path="res://microgames/pixelart/graphics/pencil_fx.png" type="Texture" id=7]
 [ext_resource path="res://microgames/pixelart/graphics/pencil.png" type="Texture" id=8]
 [ext_resource path="res://microgames/pixelart/graphics/good job text.png" type="Texture" id=9]
+[ext_resource path="res://microgames/press_key/353925__dr_skitz__boo.wav" type="AudioStream" id=11]
 [ext_resource path="res://microgames/press_key/elevator-music-lofi-version-30s-10822.mp3" type="AudioStream" id=12]
 [ext_resource path="res://addons/kenney_interface_sounds/back_002.wav" type="AudioStream" id=13]
 [ext_resource path="res://microgames/pixelart/graphics/crosshair.png" type="Texture" id=14]
@@ -423,6 +425,12 @@ text = "Fill in the pixels!"
 lifetime = 0.8
 
 [node name="Audio" type="Node2D" parent="."]
+
+[node name="WinSFX" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 5 )
+
+[node name="LoseSFX" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 11 )
 
 [node name="Music" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 12 )

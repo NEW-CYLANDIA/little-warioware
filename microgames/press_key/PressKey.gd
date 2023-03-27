@@ -1,16 +1,15 @@
 extends Microgame
 # A simple example microgame - press the key to win!
-# ...or maybe not - it gets tricky on harder levels! 
+# ...or maybe not - it gets tricky on harder levels!
 
+onready var press_sprite: AnimatedSprite = $Instructions/AnimatedSprite
 
-onready var press_sprite : AnimatedSprite = $Instructions/AnimatedSprite
-
-var velocity : Vector2
+var velocity: Vector2
 
 
 func _ready():
 	randomize()
-	velocity = Vector2(rand_range(-1,1), rand_range(-1,1)) * 500
+	velocity = Vector2(rand_range(-1, 1), rand_range(-1, 1)) * 500
 
 	# if difficulty medium or hard, chance to flip win condition
 	if session.level > Global.difficulty.EASY and randf() > 0.4:
@@ -33,7 +32,8 @@ func _input(event):
 		if win_by_default:
 			is_success = false
 			press_sprite.animation = "lose"
+			$LoseSFX.play()
 		else:
 			is_success = true
 			press_sprite.animation = "win"
-		emit_signal("play_yaynay", is_success)
+			$WinSFX.play()

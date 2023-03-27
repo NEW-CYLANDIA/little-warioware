@@ -7,9 +7,6 @@ var microgame_scenes: Array = []
 # The intermission scene
 var intermission_scene: PackedScene = preload("res://src/play_session/intermission.tscn") as PackedScene
 
-onready var yay := $Yay as AudioStreamPlayer
-onready var nay := $Nay as AudioStreamPlayer
-
 
 func _ready() -> void:
 	cache_microgame_scenes()
@@ -44,7 +41,6 @@ func play_microgame() -> void:
 	var microgame: Node = get_random_microgame().instance()
 	add_child(microgame)
 	microgame.connect("microgame_ready", self, "configure_audio_nodes", [], CONNECT_ONESHOT)
-	microgame.connect("play_yaynay", self, "play_yaynay")
 
 	var is_success: bool = yield(microgame, "microgame_done")
 
@@ -70,12 +66,3 @@ func configure_audio_nodes(microgame_node: Node) -> void:
 	for audio_player in audio_nodes + audio_nodes_2d + audio_nodes_3d:
 		audio_player.bus = "Session"
 		audio_player.pitch_scale = Global.current_session.speed
-	yay.pitch_scale = Global.current_session.speed
-	nay.pitch_scale = Global.current_session.speed
-
-
-func play_yaynay(status: bool) -> void:
-	if status:
-		yay.play()
-	else:
-		nay.play()

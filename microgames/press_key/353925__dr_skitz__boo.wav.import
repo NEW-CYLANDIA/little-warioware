@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/yay.wav-43acf8255a3cbe4233800450e2b9edf6.sample"
+path="res://.import/353925__dr_skitz__boo.wav-9649d0b85acb7c70d2a667fcb1f20ad0.sample"
 
 [deps]
 
-source_file="res://audio/yay.wav"
-dest_files=[ "res://.import/yay.wav-43acf8255a3cbe4233800450e2b9edf6.sample" ]
+source_file="res://microgames/press_key/353925__dr_skitz__boo.wav"
+dest_files=[ "res://.import/353925__dr_skitz__boo.wav-9649d0b85acb7c70d2a667fcb1f20ad0.sample" ]
 
 [params]
 
