@@ -62,6 +62,10 @@ Scores="*res://src/core/scores.gd"
 
 gdscript/warnings/return_value_discarded=false
 
+[display]
+
+window/size/resizable=false
+
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/version_checker/plugin.cfg" )
