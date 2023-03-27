@@ -1,6 +1,7 @@
 # Little Warioware (working title)
 
-### [Playable build on itch.io](https://new-cylandia.itch.io/little-warioware)
+### 🎮 [Play on itch.io!](https://new-cylandia.itch.io/little-warioware)
+### 🎙️ [Join our Discord Server!](https://discord.gg/jfmYPE3qV7)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![License: CC-BY](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by/4.0/)
 
