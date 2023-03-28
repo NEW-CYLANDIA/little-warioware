@@ -1,13 +1,56 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://microgames/apply_eyeliner/ApplyEyeliner.gd" type="Script" id=1]
 [ext_resource path="res://microgames/apply_eyeliner/Liner.png" type="Texture" id=2]
 [ext_resource path="res://microgames/apply_eyeliner/Liner.gd" type="Script" id=3]
 [ext_resource path="res://microgames/apply_eyeliner/Eye.png" type="Texture" id=4]
 [ext_resource path="res://microgames/apply_eyeliner/Eye.gd" type="Script" id=5]
+[ext_resource path="res://microgames/apply_eyeliner/SlayNay.png" type="Texture" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 2.23607
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 133, 97 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 6 )
+region = Rect2( 133, 0, 133, 97 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 6 )
+region = Rect2( 532, 0, 133, 97 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 6 )
+region = Rect2( 665, 0, 133, 97 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 6 )
+region = Rect2( 266, 0, 133, 97 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 6 )
+region = Rect2( 399, 0, 133, 97 )
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 4 ), SubResource( 5 ) ],
+"loop": true,
+"name": "nay",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 6 ), SubResource( 7 ) ],
+"loop": true,
+"name": "slay",
+"speed": 5.0
+} ]
 
 [node name="ApplyEyeliner" type="Node"]
 script = ExtResource( 1 )
@@ -42,3 +85,47 @@ texture = ExtResource( 2 )
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2( 589, 294 )
+
+[node name="Debug" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="IsInEyeliner" type="Label" parent="Debug"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 248.0
+margin_bottom = 104.0
+
+[node name="IsApplying" type="Label" parent="Debug"]
+margin_left = 8.0
+margin_top = 32.0
+margin_right = 248.0
+margin_bottom = 136.0
+
+[node name="MousePosition" type="Label" parent="Debug"]
+margin_left = 8.0
+margin_top = 56.0
+margin_right = 248.0
+margin_bottom = 160.0
+
+[node name="IsStarted" type="Label" parent="Debug"]
+margin_left = 8.0
+margin_top = 72.0
+margin_right = 344.0
+margin_bottom = 200.0
+
+[node name="Instructions" type="Node2D" parent="."]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Instructions"]
+position = Vector2( 512, 290 )
+scale = Vector2( 2.37622, 2.54768 )
+frames = SubResource( 8 )
+speed_scale = 0.5
+playing = true
+
+[node name="LoseSfx" type="AudioStreamPlayer" parent="."]
+
+[node name="WinSfx" type="AudioStreamPlayer" parent="."]
+
+[connection signal="body_entered" from="Eye/Area2D" to="." method="on_enter"]
+[connection signal="body_exited" from="Eye/Area2D" to="." method="on_exit"]
