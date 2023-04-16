@@ -12,6 +12,7 @@ func _ready():
 
 func _physics_process(_delta):
 	if hotdog_collected:
+		#hotdog moves with hand
 		$hotdog.global_position = $hand/hotdog_marker.global_position
 
 func _on_bun_collision_area_entered(area):
@@ -19,9 +20,11 @@ func _on_bun_collision_area_entered(area):
 		$hotdog.falling = false
 		hotdog_collected = true
 		if not session.level == Global.difficulty.EASY:
+			#if normal or hard, ketchup falls
 			$ketchup.falling = true
 			$ketchup/falling.play()
 		else:
+		#if difficulty is easy, hotdog wins and ketchup and mustard dont fall
 			is_success = true
 	if area.name == "ketchup_collision":
 		$ketchup.queue_free()
@@ -30,8 +33,10 @@ func _on_bun_collision_area_entered(area):
 			$mustard.falling = true
 			$mustard/falling.play()
 		else:
+			#if difficulty is medium, ketchup and hotdog wins and mustard doesnt fall
 			is_success = true
 	if area.name == "mustard_collision":
+		#if mustard falls and is caught, always win
 		$mustard.queue_free()
 		$hotdog.play("mustard")
 		is_success = true
