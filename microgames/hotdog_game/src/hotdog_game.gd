@@ -3,7 +3,6 @@ extends Microgame
 var hotdog_collected := false
 
 func _ready():
-	session.level = Global.difficulty.HARD
 	instructions.connect("timeout",self,"_on_Prompt_instructions_shown")
 	# only drops hotdog after instructions are shown
 	# if theres a baked in way of doing this w the microgame class, tell me
