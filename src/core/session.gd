@@ -16,6 +16,7 @@ var last_success : bool
 
 
 func _ready():
+	randomize()
 	connect("level_up_requested", self, "_on_level_up_requested")
 	connect("speed_up_requested", self, "_on_speed_up_requested")
 
