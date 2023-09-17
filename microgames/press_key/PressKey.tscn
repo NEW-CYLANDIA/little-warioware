@@ -1,7 +1,6 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://microgames/press_key/PressKey.gd" type="Script" id=1]
-[ext_resource path="res://src/microgames/microgame.tscn" type="PackedScene" id=2]
 [ext_resource path="res://microgames/press_key/PressKeySpritesheet.png" type="Texture" id=3]
 [ext_resource path="res://microgames/press_key/353925__dr_skitz__boo.wav" type="AudioStream" id=4]
 [ext_resource path="res://microgames/press_key/333404__jayfrosting__cheer-2.wav" type="AudioStream" id=5]
@@ -69,54 +68,53 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 100, 100 )
 
-[node name="PressKey" instance=ExtResource( 2 )]
+[node name="PressKey" type="Node"]
 script = ExtResource( 1 )
-microgame_name = "Press Spacebar"
 hint_verb = "Press!"
 
-[node name="Area2D" type="StaticBody2D" parent="." index="0"]
+[node name="Area2D" type="StaticBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 507, -1 )
 shape = SubResource( 8 )
 
-[node name="Area2D2" type="StaticBody2D" parent="." index="1"]
+[node name="Area2D2" type="StaticBody2D" parent="."]
 position = Vector2( 0, 609 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
 position = Vector2( 510, 0 )
 shape = SubResource( 8 )
 
-[node name="Area2D3" type="StaticBody2D" parent="." index="2"]
+[node name="Area2D3" type="StaticBody2D" parent="."]
 position = Vector2( -4, 284 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3"]
 position = Vector2( 1, -1 )
 shape = SubResource( 9 )
 
-[node name="Area2D4" type="StaticBody2D" parent="." index="3"]
+[node name="Area2D4" type="StaticBody2D" parent="."]
 position = Vector2( 1021, 272 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D4" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D4"]
 position = Vector2( 1, -1 )
 shape = SubResource( 9 )
 
-[node name="Instructions" type="KinematicBody2D" parent="." index="4"]
+[node name="Instructions" type="KinematicBody2D" parent="."]
 position = Vector2( 558, 290 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Instructions" index="0"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Instructions"]
 frames = SubResource( 7 )
 playing = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Instructions" index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instructions"]
 shape = SubResource( 10 )
 
-[node name="WinSFX" type="AudioStreamPlayer2D" parent="." index="5"]
+[node name="WinSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
 
-[node name="LoseSFX" type="AudioStreamPlayer2D" parent="." index="6"]
+[node name="LoseSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
 
-[node name="Music" type="AudioStreamPlayer2D" parent="." index="7"]
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )
 autoplay = true

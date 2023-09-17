@@ -12,7 +12,7 @@ func _ready():
 	velocity = Vector2(rand_range(-1, 1), rand_range(-1, 1)) * 500
 
 	# if difficulty medium or hard, chance to flip win condition
-	if session.level > Global.difficulty.EASY and randf() > 0.4:
+	if not is_level_easy() and randf() > 0.4:
 		win_by_default = true
 		is_success = true
 		press_sprite.animation = "dont_press"
@@ -20,7 +20,7 @@ func _ready():
 
 func _physics_process(delta):
 	# on hard difficulty, move instructions randomly
-	if session.level == Global.difficulty.HARD:
+	if is_level_hard():
 		var collision = $Instructions.move_and_collide(velocity * delta)
 
 		if collision:
