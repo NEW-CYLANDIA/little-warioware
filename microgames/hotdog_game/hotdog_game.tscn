@@ -69,13 +69,13 @@ z_index = -24
 texture = ExtResource( 5 )
 
 [node name="hotdog_marker" type="Position2D" parent="hand"]
-position = Vector2( -242.5, -17.5 )
+position = Vector2( -243, -25 )
 
 [node name="bun_collision" type="Area2D" parent="hand"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hand/bun_collision"]
 position = Vector2( -242.5, -17.5 )
-rotation = 1.59434
+rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="hotdog" type="AnimatedSprite" parent="."]
