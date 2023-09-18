@@ -4,8 +4,8 @@ signal level_up_requested
 signal speed_up_requested
 
 const GAME_MODE : Dictionary = {
-	"STANDARD": preload("res://src/core/mode_standard.tres"),
-	"DEBUG": preload("res://src/core/mode_debug.tres"),
+	"STANDARD": preload("res://src/core/modes/mode_standard.tres"),
+	"DEBUG": preload("res://src/core/modes/mode_debug.tres"),
 }
 const INTERMISSION_SCENE: PackedScene = preload("res://src/core/intermission.tscn")
 const MENU_SCENE : PackedScene = preload("res://src/menu/menu.tscn")

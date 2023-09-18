@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://src/core/mode_standard.tres" type="Resource" id=2]
+[ext_resource path="res://src/core/modes/mode_standard.tres" type="Resource" id=2]
 [ext_resource path="res://src/menu/menu.gd" type="Script" id=3]
 [ext_resource path="res://src/menu/mode_select_button.gd" type="Script" id=5]
 
