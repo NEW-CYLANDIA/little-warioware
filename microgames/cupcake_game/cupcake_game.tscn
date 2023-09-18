@@ -32,8 +32,7 @@ extents = Vector2( 12.25, 10 )
 
 [node name="cupcake_game" type="Node2D"]
 script = ExtResource( 4 )
-microgame_name = "Decorate the cake!"
-instructions_text = "Decorate!"
+hint_verb = "Decorate!"
 
 [node name="Bakery" type="Sprite" parent="."]
 position = Vector2( 515, 298 )

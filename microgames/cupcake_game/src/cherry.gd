@@ -1,9 +1,6 @@
 extends Sprite
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 var FALL_SPEED := 10
 var falling := false
 

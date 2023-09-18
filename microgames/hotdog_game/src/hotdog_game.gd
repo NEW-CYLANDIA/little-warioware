@@ -3,10 +3,9 @@ extends Microgame
 var hotdog_collected := false
 
 func _ready():
-	instructions.connect("timeout",self,"_on_Prompt_instructions_shown")
-	# only drops hotdog after instructions are shown
-	# if theres a baked in way of doing this w the microgame class, tell me
-	if session.level == Global.difficulty.HARD:
+	$hotdog.falling = true
+	$hotdog/falling.play()
+	if is_level_hard():
 		$hotdog.FALL_SPEED = 20
 
 func _physics_process(_delta):
@@ -18,8 +17,8 @@ func _on_bun_collision_area_entered(area):
 	if area.name == "hotdog_collision":
 		$hotdog.falling = false
 		hotdog_collected = true
-		if not session.level == Global.difficulty.EASY:
-			#if normal or hard, ketchup falls
+		if not is_level_easy():
+			#if medium or hard, ketchup falls
 			$ketchup.falling = true
 			$ketchup/falling.play()
 		else:
@@ -28,7 +27,7 @@ func _on_bun_collision_area_entered(area):
 	if area.name == "ketchup_collision":
 		$ketchup.queue_free()
 		$hotdog.play("ketchup")
-		if session.level == Global.difficulty.HARD:
+		if is_level_hard():
 			$mustard.falling = true
 			$mustard/falling.play()
 		else:
@@ -39,6 +38,3 @@ func _on_bun_collision_area_entered(area):
 		$mustard.queue_free()
 		$hotdog.play("mustard")
 		is_success = true
-func _on_Prompt_instructions_shown() -> void:
-	$hotdog.falling = true
-	$hotdog/falling.play()

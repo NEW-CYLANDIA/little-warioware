@@ -44,8 +44,7 @@ height = 71.6185
 
 [node name="hotdog_game" type="Node2D"]
 script = ExtResource( 7 )
-microgame_name = "Catch the dog!"
-instructions_text = "Catch!"
+hint_verb = "Catch!"
 
 [node name="Hotdogbg" type="Sprite" parent="."]
 position = Vector2( 512, 299 )
