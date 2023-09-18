@@ -18,13 +18,13 @@ onready var label := $Label
 # _ready() is called when the microgame starts
 func _ready():
 	# parent Microgame class has helper functions
-	# is_level_*() will return true/false
-	if is_level_easy():
+	# is_difficulty_*() will return true/false
+	if is_difficulty_easy():
 		presses_required = easy_presses_required
-	elif is_level_medium():
+	elif is_difficulty_medium():
 		presses_required = medium_presses_required
-	# get_current_level() returns difficulty as a number/enum
-	elif get_current_level() == GameState.Difficulty.HARD:
+	# get_current_difficulty_level() returns difficulty as a number/enum
+	elif get_current_difficulty_level() == GameState.Difficulty.HARD:
 		presses_required = hard_presses_required
 
 

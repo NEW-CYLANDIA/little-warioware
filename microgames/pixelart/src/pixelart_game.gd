@@ -7,7 +7,7 @@ onready var pencil: Pencil = get_node(pencil_path)
 func _ready() -> void:
 	var target_image: TileMap
 
-	match get_current_level():
+	match get_current_difficulty_level():
 		GameState.Difficulty.EASY:
 			target_image = $Image
 			pencil.color = 14

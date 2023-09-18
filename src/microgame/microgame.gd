@@ -54,19 +54,19 @@ func get_current_speed() -> float:
 	return Session.game_state.speed
 
 
-func get_current_level() -> int:
+func get_current_difficulty_level() -> int:
 	return Session.game_state.level
 
 
-func is_level_easy():
+func is_difficulty_easy():
 	return Session.game_state.level == GameState.Difficulty.EASY
 
 
-func is_level_medium():
+func is_difficulty_medium():
 	return Session.game_state.level == GameState.Difficulty.MEDIUM
 
 
-func is_level_hard():
+func is_difficulty_hard():
 	return Session.game_state.level == GameState.Difficulty.HARD
 
 
