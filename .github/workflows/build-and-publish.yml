@@ -16,9 +16,6 @@ on:
 jobs:
   # Runs the "gdformat" auto-formatter
   format_code:
-    permissions:
-      contents: write
-
     runs-on: ubuntu-latest
 
     # Since auto-formatting creates a commit, we need to make sure we don't create an infinite loop
@@ -32,7 +29,9 @@ jobs:
 
       - run: pip3 install 'gdtoolkit==3.*'
 
-      - run: gdformat **/*.gd
+      # We should be able to just do **/*.gd, but it's failing for an unspecified reapson
+      # This is ~fine~
+      - run: gdformat src/**/*.gd
 
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
@@ -41,7 +40,7 @@ jobs:
           file_pattern: "**/*.gd"
 
   build_game:
-    name: Build Game
+    name: Build and Publish Game
     # Besides skipping autoformat commits, we can manually apply a label to skip releasing
     if: ${{ github.event.label.name != 'skip release' && !contains(github.event.head_commit.message, 'Auto-Format GDScript') }}
     runs-on: ubuntu-latest
@@ -63,34 +62,21 @@ jobs:
           name: credits
           path: credits.txt
 
-      - name: export with Godot Engine and release on GitHub
+      - name: export with Godot Engine
         uses: firebelley/godot-export@v5.0.0
         with:
-          godot_executable_download_url: https://downloads.tuxfamily.org/godotengine/3.5.2/Godot_v3.5.2-stable_linux_headless.64.zip
-          godot_export_templates_download_url: https://downloads.tuxfamily.org/godotengine/3.5.2/Godot_v3.5.2-stable_export_templates.tpz
-          relative_project_path: .
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          godot_executable_download_url: https://downloads.tuxfamily.org/godotengine/3.5.1/Godot_v3.5.1-stable_linux_headless.64.zip
+          godot_export_templates_download_url: https://downloads.tuxfamily.org/godotengine/3.5.1/Godot_v3.5.1-stable_export_templates.tpz
+          relative_project_path: ./
+          relative_export_path: ./export
+          archive_output: true
+          use_godot_3: true
 
-  upload_game:
-    runs-on: ubuntu-latest
-    name: Publish Game
-    needs: [build_game]
-    steps:
-      - name: download latest HTML5 build
-        id: download-html
-        uses: dsaltares/fetch-gh-release-asset@master
+      - name: Deploy to Itch
+        uses: KikimoraGames/itch-publish@v0.0.3
         with:
-          version: "latest"
-          file: HTML5.zip
-          token: "${{ secrets.GITHUB_TOKEN }}"
-
-      - name: deploy to itch.io
-        uses: josephbmanley/butler-publish-itchio-action@master
-        env:
-          BUTLER_CREDENTIALS: ${{ secrets.ITCH_API_KEY }}
-          CHANNEL: html
-          ITCH_GAME: little-warioware
-          ITCH_USER: new-cylandia
-          PACKAGE: HTML5.zip
-          VERSION: ${{ steps.download-html.outputs.version }}
+          butlerApiKey: ${{secrets.ITCH_API_KEY}}
+          gameData: ./export/HTML5.zip
+          itchUsername: new-cylandia
+          itchGameId: little-warioware
+          buildChannel: win

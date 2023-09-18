@@ -1,6 +1,9 @@
 # Little Warioware (working title)
 
-### [Playable build on itch.io](https://iznaut.itch.io/little-warioware?password=newcylandia)
+### 🎮 [Play on itch.io!](https://new-cylandia.itch.io/little-warioware)
+### 🎙️ [Join our Discord Server!](https://discord.gg/jfmYPE3qV7)
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![License: CC-BY](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by/4.0/)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![License: CC-BY](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by/4.0/)
 
@@ -17,6 +20,8 @@ In short - I want to give WarioWare the [Little Mario](https://github.com/a-litt
 ## How can I help?
 
 Microgame contributions are always welcome, but there's still a lot of core system work that needs to be hammered out as well. There are a number of pieces I would like to be firmly in place before making this project fully public and open to submissions. I will try to keep the [Issues page](https://github.com/iznaut/little-warioware/issues) updated - anything there is work that needs to be done and I could likely use all the help I can get!
+
+A lot of the conversation around the project happens on our [Discord](https://discord.gg/jfmYPE3qV7), drop on by to chat with folks about getting involved!
 
 By contributing, you agree to abide by our [code of conduct](CODE_OF_CONDUCT.md). We take it seriously!
 
