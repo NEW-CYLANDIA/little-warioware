@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://microgames/pixelart/src/pencil.gd" type="Script" id=1]
 [ext_resource path="res://microgames/pixelart/src/texture_tilemap_converter.gd" type="Script" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://microgames/pixelart/graphics/color-tileset.png" type="Texture" id=15]
 [ext_resource path="res://microgames/pixelart/ScrollingShader.tres" type="Shader" id=16]
 [ext_resource path="res://addons/kenney_interface_sounds/error_001.wav" type="AudioStream" id=17]
+[ext_resource path="res://src/microgames/instructions.tscn" type="PackedScene" id=18]
 [ext_resource path="res://microgames/pixelart/graphics/portrait2.png" type="Texture" id=19]
 [ext_resource path="res://microgames/pixelart/graphics/wario_single.png" type="Texture" id=20]
 
@@ -321,7 +322,7 @@ animations = [ {
 [node name="Pixelart" type="Node2D"]
 script = ExtResource( 3 )
 microgame_name = "Pick the Color!"
-instructions_text = "Fill in the pixels!"
+hint_verb = "Pick the Color!"
 pencil_path = NodePath("Pencil")
 
 [node name="BG" type="Sprite" parent="."]
@@ -417,6 +418,12 @@ stream = ExtResource( 13 )
 [node name="WrongPixelPlaceSfx" type="AudioStreamPlayer" parent="Pencil"]
 stream = ExtResource( 17 )
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Instructions" parent="CanvasLayer" instance=ExtResource( 18 )]
+text = "Fill in the pixels!"
+lifetime = 0.8
+
 [node name="Audio" type="Node2D" parent="."]
 
 [node name="WinSFX" type="AudioStreamPlayer" parent="Audio"]
@@ -430,3 +437,6 @@ stream = ExtResource( 12 )
 autoplay = true
 
 [connection signal="drawing_done" from="Pencil" to="." method="_on_Pencil_drawing_done"]
+[connection signal="instructions_shown" from="CanvasLayer/Instructions" to="." method="_on_Prompt_instructions_shown"]
+
+[editable path="CanvasLayer/Instructions"]

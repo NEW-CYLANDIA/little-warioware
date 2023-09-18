@@ -5,3 +5,4 @@
 [node name="Microgame" type="Node"]
 script = ExtResource( 1 )
 microgame_name = "My First Microgame"
+hint_verb = "Win!"

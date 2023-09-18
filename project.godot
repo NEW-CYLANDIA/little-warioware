@@ -14,11 +14,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/core/game_mode.gd"
 }, {
-"base": "Timer",
-"class": "Instructions",
-"language": "GDScript",
-"path": "res://src/microgames/instructions.gd"
-}, {
 "base": "Node",
 "class": "Microgame",
 "language": "GDScript",
@@ -41,7 +36,6 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "GameMode": "",
-"Instructions": "",
 "Microgame": "",
 "MicrogameDefinition": "",
 "Pencil": "",

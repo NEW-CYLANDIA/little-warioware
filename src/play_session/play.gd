@@ -9,7 +9,6 @@ var intermission_scene: PackedScene = preload("res://src/play_session/intermissi
 
 
 func _ready() -> void:
-	randomize()
 	cache_microgame_scenes()
 	play_intermission()
 
