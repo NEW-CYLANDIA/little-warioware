@@ -30,17 +30,19 @@ func _ready():
 
 # _process() is called every frame
 func _process(_delta):
-	# on action button pressed, increment current press count
-	if Input.is_action_just_pressed("mg_action"): # "mg_action" == Z key
-		current_presses += 1
+	# wait instructions to disappear and for timer to appear before starting
+	if is_timer_running:
+		# on action button pressed, increment current press count
+		if Input.is_action_just_pressed("mg_action"): # "mg_action" == Z key
+			current_presses += 1
 
-	# if press count meats the goal, you win!
-	if _is_goal_met():
-		is_success = true # this is reported back to the Session to determine win/loss
-		$Label.text = "You did it!"
-	else:
-		# otherwise, update label to display progress
-		label.text = "Press the Action key %s more times!" % (presses_required - current_presses)
+		# if press count meats the goal, you win!
+		if _is_goal_met():
+			is_success = true # this is reported back to the Session to determine win/loss
+			$Label.text = "You did it!"
+		else:
+			# otherwise, update label to display progress
+			label.text = "Press the Action key %s more times!" % (presses_required - current_presses)
 
 
 # functions can have type checking for return values

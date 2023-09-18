@@ -13,6 +13,5 @@ hard_presses_required = 15
 [node name="Label" type="Label" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-text = "Press the Z key!"
 align = 1
 valign = 1
