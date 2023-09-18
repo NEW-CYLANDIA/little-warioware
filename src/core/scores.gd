@@ -10,12 +10,12 @@ func _ready() -> void:
 	load_scores()
 
 
-func save_score_for(mode: String, score: int) -> void:
-	if !high_scores.has(mode):
-		high_scores[mode] = 0
+func save_score_for(mode_name: String, score: int) -> void:
+	if !high_scores.has(mode_name):
+		high_scores[mode_name] = 0
 
-	if score > high_scores[mode]:
-		high_scores[mode] = score
+	if score > high_scores[mode_name]:
+		high_scores[mode_name] = score
 
 	save_scores()
 

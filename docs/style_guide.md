@@ -11,13 +11,12 @@
   ├── docs/
   ├── graphics/
   ├── microgames/
-  │   ├── microgame_1/
-  │   └── microgame_2/
+  │   ├── microgame_1/
+  │   └── microgame_2/
   ├── src/
   │   ├── core/
-  │   ├── menus/
-  │   ├── microgames/
-  │   └── play_session/
+  │   ├── menu/
+  │   └── microgame/
   └── project.godot
   ```
   - Scenes and GDScript files related to the entire game should live under `src/`

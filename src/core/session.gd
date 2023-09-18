@@ -1,51 +1,78 @@
 extends Node
-class_name Session
 
-# Mode selected for this session - used to track high scores
-var mode: String
+signal level_up_requested
+signal speed_up_requested
 
-# Player lives remaining this session
-var lives: int
+const GAME_MODE : Dictionary = {
+	"STANDARD": preload("res://src/core/modes/mode_standard.tres"),
+	"DEBUG": preload("res://src/core/modes/mode_debug.tres"),
+}
+const INTERMISSION_SCENE: PackedScene = preload("res://src/core/intermission.tscn")
+const MENU_SCENE : PackedScene = preload("res://src/menu/menu.tscn")
 
-# Microgames survived this session
-var score: int
-
-# Current difficulty level this session
-var level: int
-
-# Current speed this session
-var speed: float
-
-# Speed will increase when score == a multiple of this number
-var speed_up_interval: int
-
-# Level will increase when score == a multiple of this number
-var level_up_interval: int
+var game_state : GameState
+var microgame_pool : Array = []
+var last_success : bool
 
 
-func _init(mode_name: String) -> void:
-	var mode_metadata = Global.modes[mode_name] as GameMode
+func _ready():
+	randomize()
+	connect("level_up_requested", self, "_on_level_up_requested")
+	connect("speed_up_requested", self, "_on_speed_up_requested")
 
-	mode = mode_name
-	lives = mode_metadata.starting_lives
-	level = mode_metadata.starting_level
-	speed = mode_metadata.starting_speed
-	speed_up_interval = mode_metadata.speed_up_interval
-	level_up_interval = mode_metadata.level_up_interval
-	score = 0
-
-
-func increment_modifier(type: String) -> void:
-	if type == "speed_up":
-		speed += 0.2
-		Engine.time_scale = speed
-	if type == "level_up":
-		if level == GameMode.difficulty.EASY:
-			level = GameMode.difficulty.MEDIUM
-		elif level == GameMode.difficulty.MEDIUM:
-			level = GameMode.difficulty.HARD
+	# if microgame is being previewed directly, loop it
+	var microgame_scene: String = ""
+	for arg in OS.get_cmdline_args():
+		if arg.begins_with("res://") and arg.ends_with(".tscn"):
+			microgame_scene = arg
+	if microgame_scene.length() > 0 or not OS.has_feature("editor"):
+		game_state = GAME_MODE.DEBUG
+		microgame_pool = [load(microgame_scene)]
 
 
-func end_session() -> void:
-	Scores.save_score_for(mode, score)
-	queue_free()
+func start_mode(game_mode : GameState):
+	game_state = game_mode
+	microgame_pool = Utility.get_microgames()
+
+	_play_intermission()
+
+
+func _play_intermission() -> void:
+	get_tree().change_scene_to(INTERMISSION_SCENE)
+
+
+func _on_intermission_completed() -> void:
+	if game_state.lives > 0:
+		get_tree().change_scene_to(
+			Utility.get_random_microgame(microgame_pool)
+		)
+	else:
+		Scores.save_score_for(game_state.name, game_state.current_score)
+		queue_free()
+		get_tree().change_scene_to(MENU_SCENE)
+
+
+func _on_microgame_completed(is_success : bool) -> void:
+	# record last success for Intermission to reference
+	last_success = is_success
+	# always increase "score" count, even if failed
+	game_state.current_score += 1
+
+	# if not successful, remove a life
+	if !is_success:
+		game_state.lives -= 1
+
+	_play_intermission()
+
+
+func _on_level_up_requested() -> void:
+	if game_state.level == GameState.Difficulty.EASY:
+		game_state.level = GameState.Difficulty.MEDIUM
+	elif game_state.level == GameState.Difficulty.MEDIUM:
+		game_state.level = GameState.Difficulty.HARD
+
+
+func _on_speed_up_requested() -> void:
+	game_state.speed += 0.2
+	Engine.time_scale = game_state.speed
+

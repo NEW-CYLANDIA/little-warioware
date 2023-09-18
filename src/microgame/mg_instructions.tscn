@@ -1,13 +1,13 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://src/microgames/instructions.gd" type="Script" id=1]
-[ext_resource path="res://fonts/Wariowareincv2-2OOBw.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://fonts/Wariowareincv2-2OOBw.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://src/microgame/mg_instructions.gd" type="Script" id=2]
 
 [sub_resource type="DynamicFont" id=17]
 size = 64
 outline_size = 6
 outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 2 )
+font_data = ExtResource( 1 )
 
 [sub_resource type="Theme" id=18]
 default_font = SubResource( 17 )
@@ -107,9 +107,10 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[node name="Timer" type="Timer"]
+[node name="InstructionsTimer" type="Timer"]
 one_shot = true
-script = ExtResource( 1 )
+autostart = true
+script = ExtResource( 2 )
 
 [node name="Prompt" type="Label" parent="."]
 anchor_left = 0.5
@@ -133,3 +134,5 @@ autoplay = "Start"
 anims/FadeOut = SubResource( 19 )
 anims/RESET = SubResource( 20 )
 anims/Start = SubResource( 21 )
+
+[connection signal="timeout" from="." to="." method="_on_timeout"]

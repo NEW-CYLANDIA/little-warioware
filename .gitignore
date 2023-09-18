@@ -12,3 +12,4 @@ export/
 data_*/
 
 **/.DS_Store
+.vscode/

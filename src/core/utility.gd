@@ -1,19 +1,35 @@
 extends Node
+class_name Utility
 # Common helper functions
 
 
-func find_by_class(node: Node, className: String, result: Array) -> void:
+static func get_random_microgame(microgame_scenes : Array) -> PackedScene:
+	return microgame_scenes[randi() % microgame_scenes.size()]
+
+
+static func find_by_class(node: Node, className: String, result: Array) -> void:
 	if node.is_class(className):
 		result.push_back(node)
 	for child in node.get_children():
 		find_by_class(child, className, result)
 
 
-func find_microgames() -> Array:
+static func get_microgames() -> Array:
+	var microgame_scenes := []
+
+	for file in find_microgame_definitions():
+		var definition: Resource = load(file)
+		if definition is MicrogameDefinition:
+			microgame_scenes.append(definition.scene)
+
+	return microgame_scenes
+
+
+static func find_microgame_definitions() -> Array:
 	return list_all_files("res://microgames/", "tres")
 
 
-func list_all_files(path: String, extension: String = "") -> Array:
+static func list_all_files(path: String, extension: String = "") -> Array:
 	path = path.trim_suffix("/")
 
 	var filter: bool = extension != ""
