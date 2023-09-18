@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://microgames/pixelart/src/pencil.gd" type="Script" id=1]
 [ext_resource path="res://microgames/pixelart/src/texture_tilemap_converter.gd" type="Script" id=2]
@@ -320,8 +320,7 @@ animations = [ {
 
 [node name="Pixelart" type="Node2D"]
 script = ExtResource( 3 )
-microgame_name = "Pick the Color!"
-instructions_text = "Fill in the pixels!"
+hint_verb = "Pick the Color!"
 pencil_path = NodePath("Pencil")
 
 [node name="BG" type="Sprite" parent="."]

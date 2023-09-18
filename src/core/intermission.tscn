@@ -1,14 +1,14 @@
 [gd_scene load_steps=18 format=2]
 
-[ext_resource path="res://src/play_session/intermission.gd" type="Script" id=1]
+[ext_resource path="res://graphics/icon.png" type="Texture" id=1]
 [ext_resource path="res://graphics/level_up_spritesheet.png" type="Texture" id=2]
-[ext_resource path="res://audio/tada-fanfare-a-6313.wav" type="AudioStream" id=3]
-[ext_resource path="res://audio/tat-tat-92592.wav" type="AudioStream" id=4]
+[ext_resource path="res://audio/tat-tat-92592.wav" type="AudioStream" id=3]
+[ext_resource path="res://graphics/speed_up_spritesheet.png" type="Texture" id=4]
 [ext_resource path="res://graphics/game_over_spritesheet.png" type="Texture" id=5]
-[ext_resource path="res://graphics/speed_up_spritesheet.png" type="Texture" id=6]
+[ext_resource path="res://audio/tada-fanfare-a-6313.wav" type="AudioStream" id=6]
 [ext_resource path="res://audio/failfare-86009.wav" type="AudioStream" id=7]
-[ext_resource path="res://src/play_session/life.gd" type="Script" id=8]
-[ext_resource path="res://graphics/icon.png" type="Texture" id=9]
+[ext_resource path="res://src/core/life.gd" type="Script" id=8]
+[ext_resource path="res://src/core/intermission.gd" type="Script" id=9]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
@@ -19,11 +19,11 @@ atlas = ExtResource( 2 )
 region = Rect2( 512, 0, 512, 128 )
 
 [sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 6 )
+atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 512, 128 )
 
 [sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 6 )
+atlas = ExtResource( 4 )
 region = Rect2( 512, 0, 512, 128 )
 
 [sub_resource type="SpriteFrames" id=5]
@@ -60,7 +60,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 3.0
 margin_bottom = 3.0
-script = ExtResource( 1 )
+script = ExtResource( 9 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_left = 0.5
@@ -82,7 +82,7 @@ size_flags_horizontal = 3
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/MarginContainer"]
 margin_right = 94.0
 margin_bottom = 64.0
-texture = ExtResource( 9 )
+texture = ExtResource( 1 )
 stretch_mode = 6
 script = ExtResource( 8 )
 
@@ -95,7 +95,7 @@ size_flags_horizontal = 3
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/MarginContainer2"]
 margin_right = 95.0
 margin_bottom = 64.0
-texture = ExtResource( 9 )
+texture = ExtResource( 1 )
 stretch_mode = 6
 script = ExtResource( 8 )
 index = 1
@@ -109,7 +109,7 @@ size_flags_horizontal = 3
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/MarginContainer3"]
 margin_right = 94.0
 margin_bottom = 64.0
-texture = ExtResource( 9 )
+texture = ExtResource( 1 )
 stretch_mode = 6
 script = ExtResource( 8 )
 index = 2
@@ -123,7 +123,7 @@ size_flags_horizontal = 3
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/MarginContainer4"]
 margin_right = 95.0
 margin_bottom = 64.0
-texture = ExtResource( 9 )
+texture = ExtResource( 1 )
 stretch_mode = 6
 script = ExtResource( 8 )
 index = 3
@@ -157,7 +157,7 @@ playing = true
 
 [node name="SuccessSFX" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 518, 279 )
-stream = ExtResource( 3 )
+stream = ExtResource( 6 )
 bus = "Session"
 
 [node name="FailureSFX" type="AudioStreamPlayer2D" parent="."]
@@ -167,9 +167,7 @@ bus = "Session"
 
 [node name="StartSFX" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 518, 279 )
-stream = ExtResource( 4 )
+stream = ExtResource( 3 )
 bus = "Session"
 
 [connection signal="timeout" from="Timer" to="." method="on_Timer_timeout"]
-[connection signal="finished" from="SuccessSFX" to="." method="start_timer"]
-[connection signal="finished" from="FailureSFX" to="." method="start_timer"]
