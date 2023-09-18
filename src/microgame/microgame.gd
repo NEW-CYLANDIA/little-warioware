@@ -18,10 +18,12 @@ export(String) var hint_verb: String
 
 # Default success state for microgame
 # Use "is_success" to update player's current success state
-export(bool) var win_by_default: bool = false
+export(bool) var win_by_default : bool = false
 
+# Use to delay gameplay start until after instructions appear
+var is_timer_running : bool = false
 # Set _true_ to report a win on microgame complete or _false_ to report a loss
-var is_success: bool = false
+var is_success : bool = false
 
 
 func _ready() -> void:
@@ -48,6 +50,7 @@ func _ready() -> void:
 	yield(instructions, "timeout")
 	timer.connect("timeout", self, "_on_Timer_timeout")
 	ui_parent.add_child(timer)
+	is_timer_running = true
 
 
 func get_current_speed() -> float:
@@ -85,5 +88,6 @@ func _sync_audio_nodes() -> void:
 
 
 func _on_Timer_timeout() -> void:
+	is_timer_running = false
 	# Let Session know the microgame is over
 	emit_signal("microgame_completed", is_success)
