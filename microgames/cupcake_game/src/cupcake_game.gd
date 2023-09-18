@@ -4,9 +4,9 @@ extends Microgame
 
 func _ready() -> void:
 	#sets player movement speed depending on session difficulty
-	if is_level_medium():
+	if is_difficulty_medium():
 		$cupcake.move = true
-	if is_level_hard():
+	if is_difficulty_hard():
 		$hand.SPEED = 15
 		$cupcake.move = true
 

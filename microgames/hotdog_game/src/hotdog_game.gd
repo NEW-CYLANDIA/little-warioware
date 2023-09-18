@@ -5,7 +5,7 @@ var hotdog_collected := false
 func _ready():
 	$hotdog.falling = true
 	$hotdog/falling.play()
-	if is_level_hard():
+	if is_difficulty_medium():
 		$hotdog.FALL_SPEED = 20
 
 func _physics_process(_delta):
@@ -17,7 +17,7 @@ func _on_bun_collision_area_entered(area):
 	if area.name == "hotdog_collision":
 		$hotdog.falling = false
 		hotdog_collected = true
-		if not is_level_easy():
+		if not is_difficulty_medium():
 			#if medium or hard, ketchup falls
 			$ketchup.falling = true
 			$ketchup/falling.play()
@@ -27,7 +27,7 @@ func _on_bun_collision_area_entered(area):
 	if area.name == "ketchup_collision":
 		$ketchup.queue_free()
 		$hotdog.play("ketchup")
-		if is_level_hard():
+		if is_difficulty_medium():
 			$mustard.falling = true
 			$mustard/falling.play()
 		else:
