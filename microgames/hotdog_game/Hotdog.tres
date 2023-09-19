@@ -5,6 +5,5 @@
 
 [resource]
 script = ExtResource( 1 )
-name = "Press Key"
+name = "Hotdog"
 scene = ExtResource( 2 )
-
