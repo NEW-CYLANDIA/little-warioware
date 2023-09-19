@@ -5,7 +5,7 @@ extends Control
 
 signal intermission_completed
 
-onready var instructions_scene = preload("res://src/microgame/mg_instructions.tscn")
+onready var instructions_scene = preload("res://src/core/intermission/instructions.tscn")
 
 onready var timer : Timer = $Timer
 onready var score_display: RichTextLabel = $ScoreDisplay
