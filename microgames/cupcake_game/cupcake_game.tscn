@@ -1,0 +1,83 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://microgames/cupcake_game/graphics/hand_1.png" type="Texture" id=1]
+[ext_resource path="res://microgames/cupcake_game/graphics/hand_2.png" type="Texture" id=2]
+[ext_resource path="res://microgames/cupcake_game/graphics/bakery_bg.png" type="Texture" id=3]
+[ext_resource path="res://microgames/cupcake_game/src/cupcake_game.gd" type="Script" id=4]
+[ext_resource path="res://microgames/cupcake_game/src/hand.gd" type="Script" id=5]
+[ext_resource path="res://microgames/cupcake_game/src/falling_cherry.gd" type="Script" id=6]
+[ext_resource path="res://microgames/cupcake_game/graphics/cupcake.png" type="Texture" id=7]
+[ext_resource path="res://microgames/cupcake_game/graphics/cherry.png" type="Texture" id=8]
+[ext_resource path="res://microgames/cupcake_game/bakery_music.wav" type="AudioStream" id=9]
+[ext_resource path="res://microgames/cupcake_game/src/cupcake.gd" type="Script" id=10]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "closed",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "released",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 21.4269
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 12.25, 10 )
+
+[node name="cupcake_game" type="Node2D"]
+script = ExtResource( 4 )
+hint_verb = "Decorate!"
+
+[node name="Bakery" type="Sprite" parent="."]
+position = Vector2( 515, 298 )
+texture = ExtResource( 3 )
+
+[node name="hand" type="Node2D" parent="."]
+position = Vector2( 58, 28 )
+scale = Vector2( 1.75, 1.75 )
+script = ExtResource( 5 )
+
+[node name="hand_sprites" type="AnimatedSprite" parent="hand"]
+position = Vector2( 76.6667, 42.6667 )
+frames = SubResource( 1 )
+animation = "closed"
+
+[node name="cherry" type="Area2D" parent="hand"]
+position = Vector2( 69.3333, 80.6667 )
+scale = Vector2( 1, 1 )
+script = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hand/cherry"]
+position = Vector2( -1.33333, 14.6667 )
+shape = SubResource( 2 )
+
+[node name="cherry_sprite" type="Sprite" parent="hand/cherry"]
+position = Vector2( 7.62939e-06, 0 )
+z_index = 451
+texture = ExtResource( 8 )
+
+[node name="cupcake" type="Sprite" parent="."]
+position = Vector2( 477, 460 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 7 )
+script = ExtResource( 10 )
+
+[node name="cupcake_collision" type="Area2D" parent="cupcake"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cupcake/cupcake_collision"]
+position = Vector2( 4, -12 )
+shape = SubResource( 3 )
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -15.0
+autoplay = true
+
+[connection signal="area_entered" from="cupcake/cupcake_collision" to="." method="_on_cupcake_collision_area_entered"]
+[connection signal="area_entered" from="cupcake/cupcake_collision" to="cupcake" method="_on_cupcake_collision_area_entered"]
