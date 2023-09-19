@@ -30,4 +30,3 @@ func _on_Pencil_drawing_done() -> void:
 		$Camera2D, "zoom", $Camera2D.zoom, $FinalCamera.zoom, 0.4, Tween.TRANS_BACK, Tween.EASE_OUT
 	)
 	$CameraTween.start()
-	yield(get_tree().create_timer(0.5), "timeout")

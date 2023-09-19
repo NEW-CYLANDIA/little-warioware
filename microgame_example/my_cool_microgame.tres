@@ -7,3 +7,4 @@
 script = ExtResource( 1 )
 name = "My Cool Microgame"
 scene = ExtResource( 2 )
+hint_verb = "Mash!"

@@ -4,7 +4,6 @@ class_name Microgame
 # Custom microgames should extend this
 
 const UI_SCENES : Dictionary = {
-	"Instructions": preload("res://src/microgame/mg_instructions.tscn"),
 	"Timer": preload("res://src/microgame/mg_timer.tscn"),
 }
 
@@ -39,15 +38,8 @@ func _ready() -> void:
 
 	# add additional UI elements
 	var timer = UI_SCENES.Timer.instance()
-	var instructions = UI_SCENES.Instructions.instance()
 	var ui_parent = CanvasLayer.new()
 	add_child(ui_parent)
-
-	# wait for instructions to finish showing before adding timer
-	ui_parent.add_child(instructions)
-	instructions.prompt.text = hint_verb
-	instructions.start()
-	yield(instructions, "timeout")
 	timer.connect("timeout", self, "_on_Timer_timeout")
 	ui_parent.add_child(timer)
 	is_timer_running = true

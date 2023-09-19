@@ -5,12 +5,18 @@ extends Control
 
 signal intermission_completed
 
+onready var instructions_scene = preload("res://src/microgame/mg_instructions.tscn")
+
 onready var timer : Timer = $Timer
 onready var score_display: RichTextLabel = $ScoreDisplay
 onready var status_up: AnimatedSprite = $StatusUp
 onready var sfx_success: AudioStreamPlayer2D = $SuccessSFX
 onready var sfx_failure: AudioStreamPlayer2D = $FailureSFX
 onready var sfx_start: AudioStreamPlayer2D = $StartSFX
+onready var instructions_layer : CanvasLayer = $Instructions
+onready var instructions_timer : Timer = $InstructionsTimer
+
+var current_microgame_def : MicrogameDefinition
 
 
 func _ready() -> void:
@@ -24,6 +30,7 @@ func _ready() -> void:
 	if game_state.lives <= 0:
 		Engine.time_scale = 1
 		timer.wait_time = 5
+		instructions_timer.wait_time = 1
 		$GameOver.visible = true
 		timer.start()
 		sfx_failure.play()
@@ -48,13 +55,24 @@ func _ready() -> void:
 
 	sfx_start.play()
 	timer.start()
+	instructions_timer.start()
 
 
 func on_Timer_timeout() -> void:
-	emit_signal("intermission_completed")
+	emit_signal("intermission_completed", current_microgame_def)
 
 
 func _show_modifier_update(type: String) -> void:
 	status_up.animation = type
 	status_up.visible = true
 	timer.wait_time *= 2
+	instructions_timer.wait_time *= 2
+
+
+func _on_InstructionsTimer_timeout():
+	current_microgame_def = Utility.get_random_microgame(Session.microgame_pool)
+	# wait for instructions to finish showing before adding timer
+	var instructions = instructions_scene.instance()
+	instructions_layer.add_child(instructions)
+	instructions.prompt.text = current_microgame_def.hint_verb
+	instructions.start()

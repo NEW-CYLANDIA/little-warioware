@@ -10,46 +10,46 @@
 [ext_resource path="res://src/core/life.gd" type="Script" id=8]
 [ext_resource path="res://src/core/intermission.gd" type="Script" id=9]
 
-[sub_resource type="AtlasTexture" id=1]
+[sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 512, 128 )
 
-[sub_resource type="AtlasTexture" id=2]
+[sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 2 )
 region = Rect2( 512, 0, 512, 128 )
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 512, 128 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 4 )
 region = Rect2( 512, 0, 512, 128 )
 
 [sub_resource type="SpriteFrames" id=5]
 animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ) ],
+"frames": [ SubResource( 9 ), SubResource( 10 ) ],
 "loop": true,
 "name": "level_up",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 3 ), SubResource( 4 ) ],
+"frames": [ SubResource( 11 ), SubResource( 12 ) ],
 "loop": true,
 "name": "speed_up",
 "speed": 5.0
 } ]
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 5 )
 region = Rect2( 0, 0, 512, 256 )
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 5 )
 region = Rect2( 512, 0, 512, 256 )
 
 [sub_resource type="SpriteFrames" id=8]
 animations = [ {
-"frames": [ SubResource( 6 ), SubResource( 7 ) ],
+"frames": [ SubResource( 13 ), SubResource( 14 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -143,7 +143,7 @@ one_shot = true
 
 [node name="StatusUp" type="AnimatedSprite" parent="."]
 visible = false
-position = Vector2( 528, 248 )
+position = Vector2( 528, 184 )
 frames = SubResource( 5 )
 animation = "level_up"
 playing = true
@@ -170,4 +170,11 @@ position = Vector2( 518, 279 )
 stream = ExtResource( 3 )
 bus = "Session"
 
+[node name="InstructionsTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Instructions" type="CanvasLayer" parent="."]
+layer = 2
+
 [connection signal="timeout" from="Timer" to="." method="on_Timer_timeout"]
+[connection signal="timeout" from="InstructionsTimer" to="." method="_on_InstructionsTimer_timeout"]
