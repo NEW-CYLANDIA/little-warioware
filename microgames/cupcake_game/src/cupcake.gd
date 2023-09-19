@@ -2,9 +2,9 @@ extends Sprite
 
 var move := false
 var is_direction_right = true
-var MOVE_SPEED = 10
+const MOVE_SPEED = 10
+
 func _ready():
-	randomize()
 	position.x = rand_range(100,800)
 
 func _physics_process(_delta):
@@ -18,3 +18,7 @@ func _physics_process(_delta):
 			position.x += MOVE_SPEED
 		else:
 			position.x -= MOVE_SPEED
+
+
+func _on_cupcake_collision_area_entered(area):
+	area.stop_fall()

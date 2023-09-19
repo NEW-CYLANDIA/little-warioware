@@ -5,7 +5,7 @@
 [ext_resource path="res://microgames/cupcake_game/graphics/bakery_bg.png" type="Texture" id=3]
 [ext_resource path="res://microgames/cupcake_game/src/cupcake_game.gd" type="Script" id=4]
 [ext_resource path="res://microgames/cupcake_game/src/hand.gd" type="Script" id=5]
-[ext_resource path="res://microgames/cupcake_game/src/cherry.gd" type="Script" id=6]
+[ext_resource path="res://microgames/cupcake_game/src/falling_cherry.gd" type="Script" id=6]
 [ext_resource path="res://microgames/cupcake_game/graphics/cupcake.png" type="Texture" id=7]
 [ext_resource path="res://microgames/cupcake_game/graphics/cherry.png" type="Texture" id=8]
 [ext_resource path="res://microgames/cupcake_game/bakery_music.wav" type="AudioStream" id=9]
@@ -78,4 +78,4 @@ volume_db = -15.0
 autoplay = true
 
 [connection signal="area_entered" from="cupcake/cupcake_collision" to="." method="_on_cupcake_collision_area_entered"]
-[connection signal="area_entered" from="cupcake/cupcake_collision" to="hand/cherry" method="_on_cupcake_collision_area_entered"]
+[connection signal="area_entered" from="cupcake/cupcake_collision" to="cupcake" method="_on_cupcake_collision_area_entered"]
