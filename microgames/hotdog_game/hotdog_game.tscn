@@ -82,8 +82,7 @@ scale = Vector2( 2, 2 )
 z_index = -11
 frames = SubResource( 3 )
 script = ExtResource( 8 )
-min_position = 200
-max_position = 700
+FALL_SPEED = 15
 
 [node name="hotdog_collision" type="Area2D" parent="hotdog"]
 position = Vector2( 2, -3.5 )
@@ -106,8 +105,6 @@ scale = Vector2( 2, 2 )
 texture = ExtResource( 10 )
 script = ExtResource( 8 )
 FALL_SPEED = 20
-min_position = 200
-max_position = 700
 
 [node name="falling" type="AudioStreamPlayer2D" parent="ketchup"]
 position = Vector2( 0, -12.5 )
@@ -130,8 +127,6 @@ scale = Vector2( 2, 2 )
 texture = ExtResource( 12 )
 script = ExtResource( 8 )
 FALL_SPEED = 25
-min_position = 200
-max_position = 700
 
 [node name="falling" type="AudioStreamPlayer2D" parent="mustard"]
 position = Vector2( 4, -6.5 )

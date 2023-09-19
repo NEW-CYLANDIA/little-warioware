@@ -48,17 +48,19 @@ position = Vector2( 76.6667, 42.6667 )
 frames = SubResource( 1 )
 animation = "closed"
 
-[node name="cherry" type="Sprite" parent="hand"]
+[node name="cherry" type="Area2D" parent="hand"]
 position = Vector2( 69.3333, 80.6667 )
-z_index = 451
-texture = ExtResource( 8 )
+scale = Vector2( 1, 1 )
 script = ExtResource( 6 )
 
-[node name="cherry_collision" type="Area2D" parent="hand/cherry"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hand/cherry/cherry_collision"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hand/cherry"]
 position = Vector2( -1.33333, 14.6667 )
 shape = SubResource( 2 )
+
+[node name="cherry_sprite" type="Sprite" parent="hand/cherry"]
+position = Vector2( 7.62939e-06, 0 )
+z_index = 451
+texture = ExtResource( 8 )
 
 [node name="cupcake" type="Sprite" parent="."]
 position = Vector2( 477, 460 )

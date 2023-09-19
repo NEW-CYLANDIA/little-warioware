@@ -13,4 +13,4 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("mg_action") and can_move:
 		$hand_sprites.play("released")
 		can_move = false
-		$cherry.falling = true
+		$cherry.start_fall()
