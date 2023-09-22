@@ -27,7 +27,7 @@ func _ready():
 		if arg.begins_with("res://") and arg.ends_with(".tscn"):
 			microgame_scene_path = arg
 			current_microgame = Utility.get_definition_from_microgame_scene(
-				microgame_scene_path.get_base_dir()
+				microgame_scene_path
 			)
 	if microgame_scene_path.length() > 0 or not OS.has_feature("editor"):
 		game_state = GAME_MODE.DEBUG
