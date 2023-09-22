@@ -70,7 +70,6 @@ extents = Vector2( 100, 100 )
 
 [node name="PressKey" type="Node"]
 script = ExtResource( 1 )
-hint_verb = "Press!"
 
 [node name="Area2D" type="StaticBody2D" parent="."]
 

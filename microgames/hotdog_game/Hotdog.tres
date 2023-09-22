@@ -5,5 +5,7 @@
 
 [resource]
 script = ExtResource( 1 )
-name = "Hotdog"
+title = "Hotdog"
+short_hint = "Catch!"
+credits = [  ]
 scene = ExtResource( 2 )

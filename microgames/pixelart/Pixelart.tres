@@ -5,5 +5,7 @@
 
 [resource]
 script = ExtResource( 1 )
-name = "Pixelart"
+title = "Pixelart"
+short_hint = "Fill in the Pixels!"
+credits = [  ]
 scene = ExtResource( 2 )

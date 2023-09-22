@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource( 1 )
-title = ""
-hint_verb = ""
+title = "My Cool Microgame"
+hint_verb = "Mash!"
 credits = [ null, null ]
 scene = ExtResource( 2 )

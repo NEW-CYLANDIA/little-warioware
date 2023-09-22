@@ -13,6 +13,7 @@ const MENU_SCENE : PackedScene = preload("res://core/menu/menu.tscn")
 var game_state : GameState
 var microgame_pool : Array = []
 var last_success : bool
+var current_microgame : MicrogameDefinition
 
 
 func _ready():

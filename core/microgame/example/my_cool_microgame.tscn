@@ -7,7 +7,6 @@ script = ExtResource( 1 )
 __meta__ = {
 "_editor_description_": ""
 }
-hint_verb = "Mash!"
 hard_presses_required = 15
 
 [node name="Label" type="Label" parent="."]

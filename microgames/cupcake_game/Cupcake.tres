@@ -5,5 +5,7 @@
 
 [resource]
 script = ExtResource( 1 )
-name = "Cupcake"
+title = "Cupcake"
+short_hint = "Decorate!"
+credits = [  ]
 scene = ExtResource( 2 )

@@ -5,5 +5,7 @@
 
 [resource]
 script = ExtResource( 1 )
-name = "Press Key"
+title = "(Don't) Press Key"
+short_hint = "Press!"
+credits = [  ]
 scene = ExtResource( 2 )

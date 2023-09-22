@@ -12,10 +12,6 @@ const UI_SCENES : Dictionary = {
 # Reports player success or failure back to current session so score/lives can be updated accordingly
 signal microgame_completed(is_success)
 
-# Short hint string to display when microgame starts
-# Can be modified per play (e.g. different for higher difficulty levels)
-export(String) var hint_verb: String
-
 # Default success state for microgame
 # Use "is_success" to update player's current success state
 export(bool) var win_by_default : bool = false
@@ -45,7 +41,7 @@ func _ready() -> void:
 
 	# wait for instructions to finish showing before adding timer
 	ui_parent.add_child(instructions)
-	instructions.prompt.text = hint_verb
+	instructions.prompt.text = Session.current_microgame.short_hint
 	instructions.start()
 	yield(instructions, "timeout")
 	timer.connect("timeout", self, "_on_Timer_timeout")
