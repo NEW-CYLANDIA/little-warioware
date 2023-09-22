@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Resource",
+"class": "DeveloperDefinition",
+"language": "GDScript",
+"path": "res://core/microgame/metadata/dev_definition.gd"
+}, {
+"base": "Resource",
 "class": "GameState",
 "language": "GDScript",
 "path": "res://core/game_state.gd"
@@ -22,7 +27,7 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "MicrogameDefinition",
 "language": "GDScript",
-"path": "res://core/microgame/mg_definition.gd"
+"path": "res://core/microgame/metadata/mg_definition.gd"
 }, {
 "base": "Node2D",
 "class": "Pencil",
@@ -35,6 +40,7 @@ _global_script_classes=[ {
 "path": "res://core/utility.gd"
 } ]
 _global_script_class_icons={
+"DeveloperDefinition": "",
 "GameState": "",
 "Microgame": "",
 "MicrogameDefinition": "",
