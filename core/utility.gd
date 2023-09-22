@@ -3,8 +3,8 @@ class_name Utility
 # Common helper functions
 
 
-static func get_random_microgame(microgame_scenes : Array) -> PackedScene:
-	return microgame_scenes[randi() % microgame_scenes.size()]
+static func get_random_microgame(microgame_definitions : Array) -> MicrogameDefinition:
+	return microgame_definitions[randi() % microgame_definitions.size()]
 
 
 static func find_by_class(node: Node, className: String, result: Array) -> void:
@@ -15,14 +15,14 @@ static func find_by_class(node: Node, className: String, result: Array) -> void:
 
 
 static func get_microgames() -> Array:
-	var microgame_scenes := []
+	var microgame_defs := []
 
 	for file in find_microgame_definitions():
 		var definition: Resource = load(file)
 		if definition is MicrogameDefinition:
-			microgame_scenes.append(definition.scene)
+			microgame_defs.append(definition)
 
-	return microgame_scenes
+	return microgame_defs
 
 
 static func find_microgame_definitions() -> Array:
