@@ -1,9 +1,11 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://core/microgame/mg_definition.gd" type="Script" id=1]
-[ext_resource path="res://microgames/cupcake_game/cupcake_game.tscn" type="PackedScene" id=2]
+[ext_resource path="res://core/microgame/example/my_cool_microgame.tscn" type="PackedScene" id=2]
 
 [resource]
 script = ExtResource( 1 )
-name = "Cupcake"
+title = ""
+hint_verb = ""
+credits = [ null, null ]
 scene = ExtResource( 2 )

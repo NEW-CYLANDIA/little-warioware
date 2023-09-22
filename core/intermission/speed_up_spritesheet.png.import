@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/level_up_spritesheet.png-726fbdc86c513427b761f2201bcb9377.stex"
+path="res://.import/speed_up_spritesheet.png-9b6fd75e284c692f9d45ce23b7089092.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/level_up_spritesheet.png"
-dest_files=[ "res://.import/level_up_spritesheet.png-726fbdc86c513427b761f2201bcb9377.stex" ]
+source_file="res://core/intermission/speed_up_spritesheet.png"
+dest_files=[ "res://.import/speed_up_spritesheet.png-9b6fd75e284c692f9d45ce23b7089092.stex" ]
 
 [params]
 

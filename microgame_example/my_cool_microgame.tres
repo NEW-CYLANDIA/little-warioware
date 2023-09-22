@@ -1,9 +1,0 @@
-[gd_resource type="Resource" load_steps=3 format=2]
-
-[ext_resource path="res://src/microgame/mg_definition.gd" type="Script" id=1]
-[ext_resource path="res://microgame_example/my_cool_microgame.tscn" type="PackedScene" id=2]
-
-[resource]
-script = ExtResource( 1 )
-name = "My Cool Microgame"
-scene = ExtResource( 2 )

@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/tat-tat-92592.wav-21188a59827573263d9fb91bd0720ad1.sample"
+path="res://.import/tat-tat-92592.wav-0075658c05efae468ac274bfc17e597b.sample"
 
 [deps]
 
-source_file="res://audio/tat-tat-92592.wav"
-dest_files=[ "res://.import/tat-tat-92592.wav-21188a59827573263d9fb91bd0720ad1.sample" ]
+source_file="res://core/intermission/tat-tat-92592.wav"
+dest_files=[ "res://.import/tat-tat-92592.wav-0075658c05efae468ac274bfc17e597b.sample" ]
 
 [params]
 

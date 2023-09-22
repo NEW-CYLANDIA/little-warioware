@@ -4,8 +4,8 @@ class_name Microgame
 # Custom microgames should extend this
 
 const UI_SCENES : Dictionary = {
-	"Instructions": preload("res://src/microgame/mg_instructions.tscn"),
-	"Timer": preload("res://src/microgame/mg_timer.tscn"),
+	"Instructions": preload("res://core/microgame/mg_instructions.tscn"),
+	"Timer": preload("res://core/microgame/mg_timer.tscn"),
 }
 
 # Emitted when timer finishes

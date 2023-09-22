@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://src/microgame/mg_timer.gd" type="Script" id=1]
-[ext_resource path="res://graphics/icon.png" type="Texture" id=2]
+[ext_resource path="res://core/microgame/mg_timer.gd" type="Script" id=1]
+[ext_resource path="res://core/intermission/icon.png" type="Texture" id=2]
 
 [node name="Timer" type="Timer"]
 wait_time = 4.0

@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/tada-fanfare-a-6313.wav-00d5c107dae32fbe665e23865bd06acc.sample"
+path="res://.import/failfare-86009.wav-752fafffe279760aa0992a9e3b6cc2ab.sample"
 
 [deps]
 
-source_file="res://audio/tada-fanfare-a-6313.wav"
-dest_files=[ "res://.import/tada-fanfare-a-6313.wav-00d5c107dae32fbe665e23865bd06acc.sample" ]
+source_file="res://core/intermission/failfare-86009.wav"
+dest_files=[ "res://.import/failfare-86009.wav-752fafffe279760aa0992a9e3b6cc2ab.sample" ]
 
 [params]
 
