@@ -14,19 +14,18 @@ static func find_by_class(node: Node, className: String, result: Array) -> void:
 		find_by_class(child, className, result)
 
 
-static func get_microgames() -> Array:
+static func find_microgame_definitions_in_dir(directory_to_search : String = "res://microgames/") -> Array:
 	var microgame_defs := []
 
-	for file in find_microgame_definitions():
+	for file in list_all_files(directory_to_search, "tres"):
 		var definition: Resource = load(file)
 		if definition is MicrogameDefinition:
 			microgame_defs.append(definition)
-
 	return microgame_defs
 
 
-static func find_microgame_definitions() -> Array:
-	return list_all_files("res://microgames/", "tres")
+static func get_definition_from_microgame_scene(scene_path) -> MicrogameDefinition:
+	return find_microgame_definitions_in_dir(scene_path)[0]
 
 
 static func list_all_files(path: String, extension: String = "") -> Array:

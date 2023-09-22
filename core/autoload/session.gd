@@ -22,20 +22,21 @@ func _ready():
 	connect("speed_up_requested", self, "_on_speed_up_requested")
 
 	# if microgame is being previewed directly, loop it
-	var microgame_scene: String = ""
+	var microgame_scene_path: String = ""
 	for arg in OS.get_cmdline_args():
 		if arg.begins_with("res://") and arg.ends_with(".tscn"):
-			microgame_scene = arg
-			# TODO - this will break if scene and def aren't identically named
-			current_microgame = load(microgame_scene.replace(".tscn", ".tres"))
-	if microgame_scene.length() > 0 or not OS.has_feature("editor"):
+			microgame_scene_path = arg
+			current_microgame = Utility.get_definition_from_microgame_scene(
+				microgame_scene_path.get_base_dir()
+			)
+	if microgame_scene_path.length() > 0 or not OS.has_feature("editor"):
 		game_state = GAME_MODE.DEBUG
-		microgame_pool = [load(microgame_scene)]
+		microgame_pool = [current_microgame]
 
 
 func start_mode(game_mode : GameState):
 	game_state = game_mode
-	microgame_pool = Utility.get_microgames()
+	microgame_pool = Utility.find_microgame_definitions_in_dir()
 
 	_play_intermission()
 
