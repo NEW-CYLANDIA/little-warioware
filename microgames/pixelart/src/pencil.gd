@@ -60,7 +60,6 @@ func _input(event: InputEvent) -> void:
 
 			pixels_drawn += 1
 			if pixels_drawn >= pixels_to_draw:
-				yield(get_tree().create_timer(0.2), "timeout")
 				visible = false
 				emit_signal("drawing_done")
 		else:
