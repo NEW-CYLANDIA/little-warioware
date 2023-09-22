@@ -50,7 +50,6 @@ animation = "closed"
 
 [node name="cherry" type="Area2D" parent="hand"]
 position = Vector2( 69.3333, 80.6667 )
-scale = Vector2( 1, 1 )
 script = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hand/cherry"]

@@ -7,3 +7,4 @@
 script = ExtResource( 1 )
 name = "Cupcake"
 scene = ExtResource( 2 )
+hint_verb = "Decorate!"
