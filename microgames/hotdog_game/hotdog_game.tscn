@@ -42,7 +42,6 @@ height = 71.6185
 
 [node name="hotdog_game" type="Node2D"]
 script = ExtResource( 7 )
-hint_verb = "Catch!"
 
 [node name="Hotdogbg" type="Sprite" parent="."]
 position = Vector2( 512, 299 )

@@ -1,8 +1,9 @@
 [gd_resource type="Resource" load_steps=2 format=2]
 
-[ext_resource path="res://src/core/game_state.gd" type="Script" id=1]
+[ext_resource path="res://core/game_state.gd" type="Script" id=1]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource( 1 )
 name = "standard"
 lives = 4

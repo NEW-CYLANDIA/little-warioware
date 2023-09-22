@@ -1,9 +1,11 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
-[ext_resource path="res://src/microgame/mg_definition.gd" type="Script" id=1]
+[ext_resource path="res://core/microgame/mg_definition.gd" type="Script" id=1]
 [ext_resource path="res://microgames/press_key/PressKey.tscn" type="PackedScene" id=2]
 
 [resource]
 script = ExtResource( 1 )
-name = "Press Key"
+title = "(Don't) Press Key"
+short_hint = "Press!"
+credits = [  ]
 scene = ExtResource( 2 )

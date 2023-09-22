@@ -4,15 +4,16 @@ signal level_up_requested
 signal speed_up_requested
 
 const GAME_MODE : Dictionary = {
-	"STANDARD": preload("res://src/core/modes/mode_standard.tres"),
-	"DEBUG": preload("res://src/core/modes/mode_debug.tres"),
+	"STANDARD": preload("res://modes/mode_standard.tres"),
+	"DEBUG": preload("res://modes/mode_debug.tres"),
 }
-const INTERMISSION_SCENE: PackedScene = preload("res://src/core/intermission.tscn")
-const MENU_SCENE : PackedScene = preload("res://src/menu/menu.tscn")
+const INTERMISSION_SCENE: PackedScene = preload("res://core/intermission/intermission.tscn")
+const MENU_SCENE : PackedScene = preload("res://core/menu/menu.tscn")
 
 var game_state : GameState
 var microgame_pool : Array = []
 var last_success : bool
+var current_microgame : MicrogameDefinition
 
 
 func _ready():
@@ -25,6 +26,8 @@ func _ready():
 	for arg in OS.get_cmdline_args():
 		if arg.begins_with("res://") and arg.ends_with(".tscn"):
 			microgame_scene = arg
+			# TODO - this will break if scene and def aren't identically named
+			current_microgame = load(microgame_scene.replace(".tscn", ".tres"))
 	if microgame_scene.length() > 0 or not OS.has_feature("editor"):
 		game_state = GAME_MODE.DEBUG
 		microgame_pool = [load(microgame_scene)]
@@ -42,13 +45,14 @@ func _play_intermission() -> void:
 
 
 func _on_intermission_completed() -> void:
+	current_microgame = Utility.get_random_microgame(microgame_pool)
+	
 	if game_state.lives > 0:
 		get_tree().change_scene_to(
-			Utility.get_random_microgame(microgame_pool)
+			current_microgame.scene
 		)
 	else:
 		Scores.save_score_for(game_state.name, game_state.current_score)
-		queue_free()
 		get_tree().change_scene_to(MENU_SCENE)
 
 

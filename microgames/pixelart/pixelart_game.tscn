@@ -320,7 +320,6 @@ animations = [ {
 
 [node name="Pixelart" type="Node2D"]
 script = ExtResource( 3 )
-hint_verb = "Fill in the Pixels!"
 pencil_path = NodePath("Pencil")
 
 [node name="BG" type="Sprite" parent="."]

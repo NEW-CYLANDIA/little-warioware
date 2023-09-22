@@ -4,17 +4,13 @@ class_name Microgame
 # Custom microgames should extend this
 
 const UI_SCENES : Dictionary = {
-	"Instructions": preload("res://src/microgame/mg_instructions.tscn"),
-	"Timer": preload("res://src/microgame/mg_timer.tscn"),
+	"Instructions": preload("res://core/microgame/mg_instructions.tscn"),
+	"Timer": preload("res://core/microgame/mg_timer.tscn"),
 }
 
 # Emitted when timer finishes
 # Reports player success or failure back to current session so score/lives can be updated accordingly
 signal microgame_completed(is_success)
-
-# Short hint string to display when microgame starts
-# Can be modified per play (e.g. different for higher difficulty levels)
-export(String) var hint_verb: String
 
 # Default success state for microgame
 # Use "is_success" to update player's current success state
@@ -45,7 +41,7 @@ func _ready() -> void:
 
 	# wait for instructions to finish showing before adding timer
 	ui_parent.add_child(instructions)
-	instructions.prompt.text = hint_verb
+	instructions.prompt.text = Session.current_microgame.short_hint
 	instructions.start()
 	yield(instructions, "timeout")
 	timer.connect("timeout", self, "_on_Timer_timeout")

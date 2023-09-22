@@ -32,7 +32,6 @@ extents = Vector2( 12.25, 10 )
 
 [node name="cupcake_game" type="Node2D"]
 script = ExtResource( 4 )
-hint_verb = "Decorate!"
 
 [node name="Bakery" type="Sprite" parent="."]
 position = Vector2( 515, 298 )
@@ -50,7 +49,6 @@ animation = "closed"
 
 [node name="cherry" type="Area2D" parent="hand"]
 position = Vector2( 69.3333, 80.6667 )
-scale = Vector2( 1, 1 )
 script = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hand/cherry"]

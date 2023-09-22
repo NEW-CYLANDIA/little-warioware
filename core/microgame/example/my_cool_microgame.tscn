@@ -1,13 +1,12 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://microgame_example/my_cool_microgame.gd" type="Script" id=1]
+[ext_resource path="res://core/microgame/example/my_cool_microgame.gd" type="Script" id=1]
 
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
 __meta__ = {
 "_editor_description_": ""
 }
-hint_verb = "Mash!"
 hard_presses_required = 15
 
 [node name="Label" type="Label" parent="."]
