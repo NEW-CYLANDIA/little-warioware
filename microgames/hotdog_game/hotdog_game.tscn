@@ -1,0 +1,145 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://microgames/hotdog_game/graphics/hotdogbg.png" type="Texture" id=1]
+[ext_resource path="res://microgames/hotdog_game/falling.wav" type="AudioStream" id=2]
+[ext_resource path="res://microgames/hotdog_game/graphics/hand.png" type="Texture" id=3]
+[ext_resource path="res://microgames/hotdog_game/graphics/bottom_bun.png" type="Texture" id=4]
+[ext_resource path="res://microgames/hotdog_game/graphics/top_bun.png" type="Texture" id=5]
+[ext_resource path="res://microgames/hotdog_game/graphics/hotdog.png" type="Texture" id=6]
+[ext_resource path="res://microgames/hotdog_game/src/hotdog_game.gd" type="Script" id=7]
+[ext_resource path="res://microgames/hotdog_game/src/falling_object.gd" type="Script" id=8]
+[ext_resource path="res://microgames/hotdog_game/src/hand.gd" type="Script" id=9]
+[ext_resource path="res://microgames/hotdog_game/graphics/ketchup.png" type="Texture" id=10]
+[ext_resource path="res://microgames/hotdog_game/graphics/mustard.png" type="Texture" id=12]
+[ext_resource path="res://microgames/hotdog_game/graphics/hotdog_ketchup.png" type="Texture" id=14]
+[ext_resource path="res://microgames/hotdog_game/graphics/hotdog_mustard.png" type="Texture" id=15]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 6.5
+height = 69.1656
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ) ],
+"loop": true,
+"name": "ketchup",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ) ],
+"loop": true,
+"name": "mustard",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 21.2085
+height = 71.6185
+
+[node name="hotdog_game" type="Node2D"]
+script = ExtResource( 7 )
+
+[node name="Hotdogbg" type="Sprite" parent="."]
+position = Vector2( 512, 299 )
+z_index = -892
+texture = ExtResource( 1 )
+
+[node name="hand" type="Sprite" parent="."]
+position = Vector2( 699, 405 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+script = ExtResource( 9 )
+
+[node name="bottom_bun" type="Sprite" parent="hand"]
+show_behind_parent = true
+position = Vector2( -244, -13.5 )
+texture = ExtResource( 4 )
+
+[node name="top_bun" type="Sprite" parent="hand"]
+show_behind_parent = true
+position = Vector2( -244.5, -16 )
+z_index = -24
+texture = ExtResource( 5 )
+
+[node name="hotdog_marker" type="Position2D" parent="hand"]
+position = Vector2( -243, -25 )
+
+[node name="bun_collision" type="Area2D" parent="hand"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hand/bun_collision"]
+position = Vector2( -242.5, -17.5 )
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="hotdog" type="AnimatedSprite" parent="."]
+position = Vector2( 800, -298 )
+scale = Vector2( 2, 2 )
+z_index = -11
+frames = SubResource( 3 )
+script = ExtResource( 8 )
+FALL_SPEED = 15
+
+[node name="hotdog_collision" type="Area2D" parent="hotdog"]
+position = Vector2( 2, -3.5 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="hotdog/hotdog_collision"]
+rotation = 1.59434
+scale = Vector2( 2, 2 )
+shape = SubResource( 1 )
+
+[node name="falling" type="AudioStreamPlayer2D" parent="hotdog"]
+position = Vector2( 2, -3.5 )
+scale = Vector2( 0.5, 0.5 )
+stream = ExtResource( 2 )
+autoplay = true
+
+[node name="ketchup" type="Sprite" parent="."]
+position = Vector2( 699, -146 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 10 )
+script = ExtResource( 8 )
+FALL_SPEED = 20
+
+[node name="falling" type="AudioStreamPlayer2D" parent="ketchup"]
+position = Vector2( 0, -12.5 )
+scale = Vector2( 0.5, 0.5 )
+stream = ExtResource( 2 )
+
+[node name="ketchup_collision" type="Area2D" parent="ketchup"]
+position = Vector2( -93.5, 74.5 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ketchup/ketchup_collision"]
+position = Vector2( 191, -168 )
+rotation = 3.17631
+scale = Vector2( 2, 2 )
+shape = SubResource( 2 )
+
+[node name="mustard" type="Sprite" parent="."]
+position = Vector2( 415, -146 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 12 )
+script = ExtResource( 8 )
+FALL_SPEED = 25
+
+[node name="falling" type="AudioStreamPlayer2D" parent="mustard"]
+position = Vector2( 4, -6.5 )
+scale = Vector2( 0.5, 0.5 )
+stream = ExtResource( 2 )
+
+[node name="mustard_collision" type="Area2D" parent="mustard"]
+position = Vector2( -91, 80 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="mustard/mustard_collision"]
+position = Vector2( 191, -168 )
+rotation = 3.17631
+scale = Vector2( 2, 2 )
+shape = SubResource( 2 )
+
+[connection signal="area_entered" from="hand/bun_collision" to="." method="_on_bun_collision_area_entered"]

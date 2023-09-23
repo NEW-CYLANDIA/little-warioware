@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://core/game_state.gd" type="Script" id=1]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource( 1 )
+name = "standard"
+lives = 4
+level = 1
+speed = 1.0
+level_up_interval = 10
+speed_up_interval = 3

@@ -1,9 +1,11 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
-[ext_resource path="res://src/microgame/mg_definition.gd" type="Script" id=1]
+[ext_resource path="res://core/microgame/metadata/mg_definition.gd" type="Script" id=1]
 [ext_resource path="res://microgames/pixelart/pixelart_game.tscn" type="PackedScene" id=2]
 
 [resource]
 script = ExtResource( 1 )
-name = "Pixelart"
+title = "Pixelart"
+short_hint = "Fill in the Pixels!"
+credits = [  ]
 scene = ExtResource( 2 )

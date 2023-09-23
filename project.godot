@@ -10,19 +10,24 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Resource",
+"class": "DeveloperDefinition",
+"language": "GDScript",
+"path": "res://core/microgame/metadata/dev_definition.gd"
+}, {
+"base": "Resource",
 "class": "GameState",
 "language": "GDScript",
-"path": "res://src/core/game_state.gd"
+"path": "res://core/game_state.gd"
 }, {
 "base": "Node",
 "class": "Microgame",
 "language": "GDScript",
-"path": "res://src/microgame/microgame.gd"
+"path": "res://core/microgame/microgame.gd"
 }, {
 "base": "Resource",
 "class": "MicrogameDefinition",
 "language": "GDScript",
-"path": "res://src/microgame/mg_definition.gd"
+"path": "res://core/microgame/metadata/mg_definition.gd"
 }, {
 "base": "Node2D",
 "class": "Pencil",
@@ -32,9 +37,10 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "Utility",
 "language": "GDScript",
-"path": "res://src/core/utility.gd"
+"path": "res://core/utility.gd"
 } ]
 _global_script_class_icons={
+"DeveloperDefinition": "",
 "GameState": "",
 "Microgame": "",
 "MicrogameDefinition": "",
@@ -45,17 +51,17 @@ _global_script_class_icons={
 [application]
 
 config/name="Little Warioware"
-run/main_scene="res://src/menu/menu.tscn"
-config/icon="res://graphics/icon.png"
+run/main_scene="res://core/menu/menu.tscn"
+config/icon="res://core/intermission/icon.png"
 
 [audio]
 
-default_bus_layout="res://audio/default_bus_layout.tres"
+default_bus_layout="res://core/default_bus_layout.tres"
 
 [autoload]
 
-Scores="*res://src/core/scores.gd"
-Session="*res://src/core/session.gd"
+Scores="*res://core/autoload/scores.gd"
+Session="*res://core/autoload/session.gd"
 
 [debug]
 
