@@ -25,7 +25,7 @@ static func find_microgame_definitions_in_dir(directory_to_search : String = "re
 
 
 static func get_definition_from_microgame_scene(scene_path) -> MicrogameDefinition:
-	return find_microgame_definitions_in_dir(scene_path)[0]
+	return find_microgame_definitions_in_dir(scene_path.get_base_dir())[0]
 
 
 static func list_all_files(path: String, extension: String = "") -> Array:

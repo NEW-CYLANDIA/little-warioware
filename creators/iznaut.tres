@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://core/microgame/metadata/dev_definition.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+display_name = "izzy kestrel"
+pronouns = "she/her"
+website = "https://iznaut.com/"
