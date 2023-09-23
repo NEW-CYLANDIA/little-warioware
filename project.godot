@@ -29,11 +29,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://core/microgame/metadata/mg_definition.gd"
 }, {
-"base": "Node2D",
-"class": "Pencil",
-"language": "GDScript",
-"path": "res://microgames/pixelart/src/pencil.gd"
-}, {
 "base": "Node",
 "class": "Utility",
 "language": "GDScript",
@@ -44,7 +39,6 @@ _global_script_class_icons={
 "GameState": "",
 "Microgame": "",
 "MicrogameDefinition": "",
-"Pencil": "",
 "Utility": ""
 }
 
