@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=4 format=2]
 
 [ext_resource path="res://core/microgame/metadata/mg_definition.gd" type="Script" id=1]
-[ext_resource path="res://core/microgame/example/my_cool_microgame.tscn" type="PackedScene" id=2]
+[ext_resource path="res://core/microgame/example/microgame.tscn" type="PackedScene" id=2]
 [ext_resource path="res://creators/iznaut.tres" type="Resource" id=3]
 
 [resource]
