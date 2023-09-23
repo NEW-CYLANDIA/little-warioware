@@ -31,7 +31,7 @@ jobs:
 
       # We should be able to just do **/*.gd, but it's failing for an unspecified reapson
       # This is ~fine~
-      - run: gdformat src/**/*.gd
+      - run: gdformat core/**/*.gd
 
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:

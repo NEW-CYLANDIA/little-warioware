@@ -1,7 +1,7 @@
 extends Microgame
 
 export(NodePath) var pencil_path
-onready var pencil: Pencil = get_node(pencil_path)
+onready var pencil = get_node(pencil_path)
 
 func _ready() -> void:
 	var target_image: TileMap

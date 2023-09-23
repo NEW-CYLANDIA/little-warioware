@@ -1,9 +1,5 @@
 extends Node2D
 
-class_name Pencil
-# Declare member variables here. Examples:
-# var a: int = 2
-# var b: String = "text"
 
 export var dir: Vector2
 
