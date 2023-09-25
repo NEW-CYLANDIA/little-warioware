@@ -22,6 +22,10 @@ var is_timer_running : bool = false
 var is_success : bool = false
 
 
+func get_class() -> String:
+	return "Microgame"
+
+
 func _ready() -> void:
 	# set default success state
 	is_success = win_by_default

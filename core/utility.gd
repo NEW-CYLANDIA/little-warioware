@@ -24,8 +24,11 @@ static func find_microgame_definitions_in_dir(directory_to_search : String = "re
 	return microgame_defs
 
 
-static func get_definition_from_microgame_scene(scene_path) -> MicrogameDefinition:
-	return find_microgame_definitions_in_dir(scene_path.get_base_dir())[0]
+static func get_definition_from_microgame_scene(scene_path : String) -> MicrogameDefinition:
+	var defs = find_microgame_definitions_in_dir(
+		scene_path.get_base_dir()
+	)
+	return defs[0] if defs.size() > 0 else null
 
 
 static func list_all_files(path: String, extension: String = "") -> Array:
