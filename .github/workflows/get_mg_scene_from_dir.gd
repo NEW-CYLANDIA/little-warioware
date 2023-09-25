@@ -6,7 +6,7 @@ func _init():
     var def : MicrogameDefinition = Utility.find_microgame_definitions_in_dir(
         "res://microgames/" + mg_dir
     )[0]
-    var mg_scene_path : String = def.scene.resource_path
+    var mg_scene_path : String = def.scene
 
     # for filepath in Utility.list_all_files(def.resource_path.get_base_dir(), "tscn"):
     #     var scene_node = load(filepath).instance()

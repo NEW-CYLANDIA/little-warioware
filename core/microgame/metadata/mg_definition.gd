@@ -9,4 +9,4 @@ export var title: String
 export var short_hint: String
 export(Array, Resource) var credits: Array
 export(InputType) var input_type
-export var scene: PackedScene # TODO - do we really need this or can we infer from directory?
+export(String, FILE, "*.tscn") var scene: String # TODO - do we really need this or can we infer from directory?

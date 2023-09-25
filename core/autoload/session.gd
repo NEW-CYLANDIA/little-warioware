@@ -29,7 +29,15 @@ func _ready():
 			current_microgame = Utility.get_definition_from_microgame_scene(
 				microgame_scene_path
 			)
-	if microgame_scene_path.length() > 0 or not OS.has_feature("editor"):
+	# TODO - made a mess here, will clean up later
+	var opened_scene_path = get_tree().current_scene.filename
+	if opened_scene_path.get_file() != "menu.tscn":
+			game_state = GAME_MODE.DEBUG
+			current_microgame = Utility.get_definition_from_microgame_scene(
+				opened_scene_path
+			)
+			microgame_pool = [current_microgame]
+	elif microgame_scene_path.length() > 0 or not OS.has_feature("editor"):
 		game_state = GAME_MODE.DEBUG
 		microgame_pool = [current_microgame]
 
@@ -49,7 +57,7 @@ func _on_intermission_completed() -> void:
 	current_microgame = Utility.get_random_microgame(microgame_pool)
 	
 	if game_state.lives > 0:
-		get_tree().change_scene_to(
+		get_tree().change_scene(
 			current_microgame.scene
 		)
 	else:
