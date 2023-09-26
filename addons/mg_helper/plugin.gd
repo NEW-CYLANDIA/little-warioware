@@ -37,7 +37,7 @@ func _exit_tree():
 func _on_scene_changed(scene_root):
 	if new_mg_just_created:
 		active_mg_def = Utility.get_definition_from_microgame_scene(scene_root.filename)
-		active_mg_def.scene = load(scene_root.filename)
+		active_mg_def.scene = scene_root.filename
 		yield(get_tree().create_timer(0.1), "timeout")
 		get_editor_interface().edit_resource(active_mg_def)
 		new_mg_just_created = false
@@ -52,4 +52,4 @@ func _on_button_pressed(_ud):
 		dir.copy(file, new_mg_dir + file.get_file())
 	get_editor_interface().get_resource_filesystem().scan()
 	new_mg_just_created = true
-	get_editor_interface().open_scene_from_path(new_mg_dir + "microgame.tscn")
+	get_editor_interface().open_scene_from_path(new_mg_dir + "mg_scene.tscn")

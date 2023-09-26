@@ -18,7 +18,7 @@ var current_microgame : MicrogameDefinition
 
 func _ready():
 	# hack to get PR stuff working
-	if OS.get_cmdline_args()[0] == "-s":
+	if OS.get_cmdline_args().size() > 0 and OS.get_cmdline_args()[0] == "-s":
 		return
 
 	randomize()
