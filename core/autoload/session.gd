@@ -1,6 +1,8 @@
 extends Node
 
+#warning-ignore:UNUSED_SIGNAL
 signal level_up_requested
+#warning-ignore:UNUSED_SIGNAL
 signal speed_up_requested
 
 const GAME_MODE : Dictionary = {
