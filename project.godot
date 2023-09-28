@@ -67,7 +67,7 @@ window/size/resizable=false
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/version_checker/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/mg_helper/plugin.cfg", "res://addons/version_checker/plugin.cfg" )
 
 [input]
 

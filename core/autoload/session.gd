@@ -1,14 +1,16 @@
 extends Node
 
+#warning-ignore:UNUSED_SIGNAL
 signal level_up_requested
+#warning-ignore:UNUSED_SIGNAL
 signal speed_up_requested
 
 const GAME_MODE : Dictionary = {
 	"STANDARD": preload("res://modes/mode_standard.tres"),
 	"DEBUG": preload("res://modes/mode_debug.tres"),
 }
-const INTERMISSION_SCENE: PackedScene = preload("res://core/intermission/intermission.tscn")
-const MENU_SCENE : PackedScene = preload("res://core/menu/menu.tscn")
+const INTERMISSION_SCENE: String = "res://core/intermission/intermission.tscn"
+const MENU_SCENE : String = "res://core/menu/menu.tscn"
 
 var game_state : GameState
 var microgame_pool : Array = []
@@ -17,6 +19,10 @@ var current_microgame : MicrogameDefinition
 
 
 func _ready():
+	# hack to get PR stuff working
+	if OS.get_cmdline_args().size() > 0 and OS.get_cmdline_args()[0] == "-s":
+		return
+
 	randomize()
 	connect("level_up_requested", self, "_on_level_up_requested")
 	connect("speed_up_requested", self, "_on_speed_up_requested")
@@ -50,7 +56,7 @@ func start_mode(game_mode : GameState):
 
 
 func _play_intermission() -> void:
-	get_tree().change_scene_to(INTERMISSION_SCENE)
+	get_tree().change_scene(INTERMISSION_SCENE)
 
 
 func _on_intermission_completed() -> void:
@@ -62,7 +68,7 @@ func _on_intermission_completed() -> void:
 		)
 	else:
 		Scores.save_score_for(game_state.name, game_state.current_score)
-		get_tree().change_scene_to(MENU_SCENE)
+		get_tree().change_scene(MENU_SCENE)
 
 
 func _on_microgame_completed(is_success : bool) -> void:

@@ -3,6 +3,10 @@
 export.cfg
 
 export/
+build/
+
+# ignore copied example if not renamed
+microgames/my_cool_microgame/
 
 # Imported translations (automatically generated from CSV files)
 *.translation
